@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Eco-Boutique 360 | Curso de Velas y Jabones Artesanales</title>
+    <meta name="description" content="El Sistema Rentable de Velas y Jabones Botánicos. Convierte tu Cocina en un Estudio Aromático Premium en 30 días sin experiencia previa.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap');
+        html { scroll-behavior: smooth; }
+        .glow-orb { position: absolute; background: rgba(224, 122, 95, 0.15); filter: blur(120px); border-radius: 50%; z-index: 0; width: 50vw; height: 50vh; pointer-events: none; }
+        .glass-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; backdrop-filter: blur(12px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .text-gradient { color: transparent; -webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #D4AF37, #FDE08B); }
+        .highlight-marker { background: rgba(224, 122, 95, 0.15); color: #E07A5F; padding: 0 0.4rem; border-radius: 0.125rem; font-weight: 600; }
+        
+        .guarantee-seal {
+            width: 140px; height: 140px; background: #0F1714; border: 3px solid #D4AF37; border-radius: 50%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+            position: relative; box-shadow: 0 0 25px rgba(212, 175, 55, 0.2); margin: 0 auto;
+        }
+        .guarantee-seal::before {
+            content: ''; position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px;
+            border: 1px dashed rgba(212, 175, 55, 0.7); border-radius: 50%;
+        }
+        .guarantee-seal .days { font-size: 2.5rem; font-weight: 800; color: #D4AF37; line-height: 1; margin-top: 5px; }
+        .guarantee-seal .text { font-size: 0.65rem; font-weight: 700; color: #FDE08B; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; padding: 0 10px; }
+
+        .accordion-content { transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out; max-height: 0; overflow: hidden; padding-top: 0; padding-bottom: 0; }
+        .accordion-content.open { max-height: 400px; padding-top: 1rem; padding-bottom: 1rem; }
+        .accordion-btn svg { transition: transform 0.3s ease; }
+        .accordion-btn.open svg { transform: rotate(180deg); }
+    </style>
+</head>
+<!-- 
+HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
+1. LIBERTAD: Escapar de la rutina y ser dueña de tu tiempo.
+2. CONTROL: Dominar una habilidad comprobada sin perder dinero.
+3. RECONOCIMIENTO: Crear un producto premium digno de admirar.
+-->
+<body class="font-sans text-lg md:text-xl antialiased bg-dark text-white overflow-x-hidden selection:bg-accent selection:text-white">
+
+    <!-- BLOQUE 1: PRE-HEADER Y EYEBROW -->
+    <div class="bg-light text-slate-900 py-3 px-4 text-center text-sm md:text-base font-semibold tracking-wide border-b border-gray-200">
+        <span class="bg-red-100 text-red-700 px-2.5 py-1 rounded text-xs uppercase font-bold mr-2">Reporte Confidencial 2026</span>
+        Tiempo de lectura: 3 minutos
+    </div>
+
+    <!-- BLOQUE 2: TITULAR DE CURIOSIDAD (HERO) -->
+    <section class="relative bg-dark pt-16 pb-24 px-4 overflow-hidden">
+        <div class="glow-orb top-0 left-0"></div>
+        <div class="glow-orb bottom-0 right-0" style="background: rgba(212, 175, 55, 0.1);"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-8">
+                ¿Sabías Que Puedes Transformar Tu Cocina en un <span class="text-gradient">Estudio Aromático Premium</span> en Solo <span class="text-accent">14 Días</span>?
+            </h1>
+
+            <div class="relative max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/10 mb-8">
+                <img src="assets/hero_eco.webp" alt="Mujer en cocina creando vela premium" class="w-full h-auto object-cover" onerror="this.style.display='none'" fetchpriority="high" loading="eager">
+                <div class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent"></div>
+            </div>
+            
+            <h2 class="text-lg md:text-2xl text-gray-300 font-light mb-10 max-w-3xl mx-auto leading-relaxed">
+                Sin gastar fortunas en materiales ni lidiar con recetas fallidas. Aprende el paso a paso exacto para crear piezas artesanales irresistibles que se venden solas en redes sociales.
+            </h2>
+
+            <a href="#inversion-hoy" aria-label="Ir a la oferta" class="inline-block bg-accent hover:bg-[#c96c53] text-white font-bold py-4 px-10 rounded-full text-xl shadow-[0_0_20px_rgba(224,122,95,0.4)] transition-all transform hover:scale-105">
+                Sí, quiero desatar mi potencial creativo
+            </a>
+        </div>
+    </section>
+
+    <!-- BLOQUE 3: AGITACIÓN Y MISTERIO (La Historia) -->
+    <section class="bg-light text-slate-900 py-20 px-4">
+        <div class="max-w-3xl mx-auto text-center mb-10">
+            <h2 class="text-sm uppercase tracking-widest text-accent font-bold mb-2">Una Pregunta Sincera</h2>
+            <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
+                ¿Hasta cuándo seguirás <span class="text-accent font-black">aplazando el sueño</span> de tener tu propio negocio creativo?
+            </h3>
+        </div>
+        <div class="max-w-3xl mx-auto space-y-6 text-lg md:text-xl leading-relaxed">
+            <p>Te despiertas otro lunes. El sonido de la alarma es un martillazo de realidad. Sabes que te espera otra semana de tráfico, estrés y cumplir los sueños de alguien más. Llegas a casa agotada, viendo en Instagram a otras mujeres que parecen tener la vida perfecta: negocios propios, tiempo libre, y creando productos hermosos desde la paz de su hogar.</p>
+            <p>La frustración inunda tu mente. <strong class="text-slate-900">"Yo podría hacer eso"</strong>, piensas. "Tengo el talento". Pero el miedo derrite tu confianza. Invertir ahorros intentando sobrevivir en un mercado saturado es un riesgo que aplasta tu motivación.</p>
+            <p class="font-semibold text-xl md:text-2xl text-accent">¿Y si te dijera que el problema no eres tú, ni el mercado, sino que te han estado enseñando el camino equivocado hacia el emprendimiento?</p>
+        </div>
+    </section>
+
+    <!-- BLOQUE 4: EL INVALIDADOR -->
+    <section class="bg-dark py-20 px-4 relative">
+        <div class="glow-orb top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-sm uppercase tracking-widest text-accent font-bold mb-2">La trampa de los métodos convencionales</h2>
+                <h3 class="text-3xl md:text-5xl font-bold">Por qué la mayoría <span class="text-red-500">fracasa</span> y abandona</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div>
+                    <img src="assets/pain_eco.webp" alt="Mujer frustrada con materiales de cera baratos" class="rounded-2xl shadow-xl border border-white/10" onerror="this.style.display='none'" loading="lazy">
+                </div>
+                <div class="space-y-4 text-gray-300 text-lg md:text-xl leading-relaxed">
+                    <p>Allá afuera, el mercado está inundado de cursitos baratos de "haz tu propia vela en casa". Te enseñan a hacer manualidades para regalar a tus tías en Navidad. Te hacen creer que el negocio es vender velas baratas en ferias locales, compitiendo por centavos.</p>
+                    <p>Esa es la receta perfecta para aplastar tu sueño, agotar tus ahorros en materiales mediocres y terminar odiando algo que debía darte placer.</p>
+                    <p class="font-bold text-white border-l-4 border-accent pl-4">Cuando compites por precio, siempre habrá alguien dispuesto a vender más barato. Esa batalla es una pérdida de tiempo y dinero garantizada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOQUE 5: REVELACIÓN DEL MECANISMO ÚNICO (NEURO-CONTRASTE DE ALIVIO) -->
+    <section class="bg-light text-slate-900 py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-sm uppercase tracking-widest text-accent font-bold mb-2">Por Fin, Tu Salida De La Rutina</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+                    El <span class="text-gold font-black">Alivio</span> Que Buscabas: Descubre el Método de <span class="text-gold font-black">Bucle Cerrado</span> Eco-Boutique 360
+                </h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 items-center flex-row-reverse md:flex-row">
+                <div class="space-y-4 order-2 md:order-1 text-lg md:text-xl leading-relaxed">
+                    <p class="font-bold text-xl text-slate-900 border-l-4 border-accent pl-4">
+                        Respira profundo: No naciste para ser espectadora de cómo otras mujeres construyen su libertad mientras tú agotas tu vida en la rutina.
+                    </p>
+                    <p>No necesitas arriesgar tus ahorros ni perder meses en frustrante prueba y error. Solo necesitas un <strong>camino seguro y comprobado</strong> para tomar el control total de tus ingresos y ser tú quien abra las puertas de su propia marca de lujo desde la comodidad de tu cocina.</p>
+                    <p>La respuesta confidencial que utilizan las marcas de lujo para vender a precios altos no está en la cera... está en activar el <strong>Código de Experiencia Sensorial</strong>. Te presentamos el <strong>Sistema Eco-Boutique 360</strong>: el único método sigiloso de bucle cerrado que te da el poder de fabricar productos de alta gama y posicionarlos como objetos de deseo en redes sociales.</p>
+                </div>
+                <div class="order-1 md:order-2">
+                    <img src="assets/solution_eco.webp" alt="Colección de velas y jabones premium" class="rounded-2xl shadow-xl" onerror="this.style.display='none'" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOQUE 6: EL PUENTE LÓGICO -->
+    <section class="bg-accent text-white py-20 px-4">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4">El Mapa Exacto Para Construir Tu <span class="text-gradient">Marca Premium</span> Desde Cero</h2>
+            <p class="text-gray-100 text-lg max-w-3xl mx-auto mb-12">No te enseñamos a hacer simples "manualidades". Te entregamos el currículum más exhaustivo del mercado para que domines desde la alquimia de las ceras hasta la estructuración de una Eco-Boutique altamente rentable.</p>
+            
+            <div class="max-w-3xl mx-auto space-y-4 text-left">
+                <!-- Módulo 1 -->
+                <details class="group bg-black/20 rounded-xl border border-white/10 hover:border-gold/50 transition-colors overflow-hidden">
+                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-lg md:text-xl">
+                        <span class="text-gold">FASE 1: DÍAS 1 A 3 - ALQUIMIA BÁSICA</span>
+                        <span class="transition group-open:rotate-180 text-gold">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-300 text-sm md:text-base border-t border-white/5 mt-2">
+                        <ul class="space-y-3 mb-4 mt-4">
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Conoce tus mentores</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Conoce la plataforma</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Cuánto dinero necesito para iniciar</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Lista de proveedores para velas artesanales</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Lista de proveedores para jabones artesanales</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Comunidad de apoyo</li>
+                        </ul>
+                        <div class="p-4 bg-accent/10 border-l-4 border-accent rounded text-gray-200 text-sm">
+                            <strong class="text-accent">Nota:</strong> Las clases de proveedores (en Video), cuentan también con entregables en PDF. (Adicionalmente se brinda la lista de materiales)
+                        </div>
+                    </div>
+                </details>
+                
+                <!-- Módulo 2 -->
+                <details class="group bg-black/20 rounded-xl border border-white/10 hover:border-gold/50 transition-colors overflow-hidden">
+                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-lg md:text-xl">
+                        <span class="text-gold">FASE 2: DÍAS 4 A 6 - FORMULACIÓN EXACTA</span>
+                        <span class="transition group-open:rotate-180 text-gold">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-300 text-sm md:text-base border-t border-white/5 mt-2">
+                        <ul class="space-y-3 mb-4 mt-4">
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Términos comunes</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Ceras que se manejan en el programa</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Aceite Vs fragancias</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Colorantes</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Mezcla de ceras</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Aprende de pabilos</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Densidad de la cera Vs agua</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Tu primera vela (primer proyecto)</li>
+                        </ul>
+                        <div class="p-4 bg-accent/10 border-l-4 border-accent rounded text-gray-200 text-sm">
+                            <strong class="text-accent">Nota:</strong> Aparte de las clases (en Video), cuenta también con entregables en PDF.
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Módulo 3 -->
+                <details class="group bg-black/20 rounded-xl border border-white/10 hover:border-gold/50 transition-colors overflow-hidden">
+                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-lg md:text-xl">
+                        <span class="text-gold">FASE 3: DÍAS 7 A 9 - CREACIÓN DE CATÁLOGO</span>
+                        <span class="transition group-open:rotate-180 text-gold">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-300 text-sm md:text-base border-t border-white/5 mt-2">
+                        <ul class="space-y-3 mt-4">
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Bubble pastel</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Figuras aromáticas</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Marmoleada en molde de silicona</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Vela Hidratante para tu piel</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Endurecedor natural</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Velón básico en parafina china</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Cera micro perlada</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Limpieza de utensilios</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Vela en Gel en molde</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- Módulo 4 -->
+                <details class="group bg-black/20 rounded-xl border border-white/10 hover:border-gold/50 transition-colors overflow-hidden">
+                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-lg md:text-xl">
+                        <span class="text-gold">FASE 4: DÍAS 10 A 11 - TÉCNICAS PREMIUM</span>
+                        <span class="transition group-open:rotate-180 text-gold">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-300 text-sm md:text-base border-t border-white/5 mt-2">
+                        <ul class="space-y-3 mt-4 grid md:grid-cols-2 gap-x-4">
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Pergamino</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Revelación de Genero</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Souvenir</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Vela Sorpresa</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Cera Micro perlada + Agua</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Cera Micro perlada en Capas</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Coronita en botella</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Intencionales (Pasión y protección)</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Técnica a 45 grados</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Vela Efecto Horneable</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Vela Efecto Porcelana - Barnizada</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Waxmelt Cuchariable</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Waxmelt Sgueezable o exprimible</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- Módulo 5 -->
+                <details class="group bg-black/20 rounded-xl border border-white/10 hover:border-gold/50 transition-colors overflow-hidden">
+                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-lg md:text-xl">
+                        <span class="text-gold">FASE 5: DÍAS 12 A 13 - ACABADOS DE LUJO</span>
+                        <span class="transition group-open:rotate-180 text-gold">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-300 text-sm md:text-base border-t border-white/5 mt-2">
+                        <ul class="space-y-3 mt-4 grid md:grid-cols-2 gap-x-4">
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Ponquesito</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Iceberg</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Glitter</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Capuchino</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Suculentas</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Sandia</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Feliz cumpleaños - Confeti</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Cheesecake</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Ice latte</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Pop Corns</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Proyecto decorativos en yeso "Alabastro"</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Bouquet de ramos</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Vela tipo Cuarzo</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- Módulo 6 -->
+                <details class="group bg-black/20 rounded-xl border border-white/10 hover:border-gold/50 transition-colors overflow-hidden">
+                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-lg md:text-xl">
+                        <span class="text-gold">FASE 6: DÍA 14 - MODELADO Y LANZAMIENTO</span>
+                        <span class="transition group-open:rotate-180 text-gold">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-300 text-sm md:text-base border-t border-white/5 mt-2">
+                        <ul class="space-y-3 mt-4">
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Teoría para moldes en silicona</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Materiales para tus moldes</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Proceso de elaboración</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Desmoldado del molde</li>
+                            <li class="flex items-start"><span class="text-accent font-bold mr-3">✓</span> Pulido y Final</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- FUTUROS MÓDULOS SE INSERTARÁN AQUÍ -->
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOQUE 6.5: GALERÍA DE CREACIONES Y TÉCNICAS (6 TIPOS DE VELAS) -->
+    <section class="bg-dark py-20 px-4 relative overflow-hidden">
+        <div class="glow-orb top-1/3 left-1/4"></div>
+        <div class="glow-orb bottom-1/4 right-1/4" style="background: rgba(212, 175, 55, 0.12);"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-sm uppercase tracking-widest text-accent font-bold mb-2">Catálogo de Habilidades</h2>
+                <h3 class="text-3xl md:text-5xl font-bold">Una Muestra De Las Técnicas Premium Que <span class="text-gradient">Dominarás</span></h3>
+                <p class="text-gray-300 text-lg mt-4 max-w-2xl mx-auto">Estas son solo 6 de las decenas de creaciones artesanales de alto impacto visual y sensorial que aprenderás, diseñadas específicamente para venderse a precios premium en redes sociales.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Vela 1: Iceberg -->
+                <div class="glass-card overflow-hidden group hover:border-gold/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/vela_iceberg.webp" alt="Vela Iceberg en Gel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/30 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-accent/90 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Técnica Gel</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-2xl font-bold text-white mb-2">Vela Iceberg Luminosa</h4>
+                        <p class="text-base md:text-lg text-gray-300 leading-relaxed">Formulación translúcida en cera gel con inclusiones geométricas cristalinas que refractan la luz de forma espectacular.</p>
+                    </div>
+                </div>
+
+                <!-- Vela 2: Marmolizada -->
+                <div class="glass-card overflow-hidden group hover:border-gold/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/vela_marmolizada.webp" alt="Vela Marmolizada Premium" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/30 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-gold/90 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Acabado Lujo</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-2xl font-bold text-white mb-2">Vela Marmolizada</h4>
+                        <p class="text-base md:text-lg text-gray-300 leading-relaxed">Técnica de veteado orgánico simulando piedra de mármol pulida con pigmentos naturales de alta fijación.</p>
+                    </div>
+                </div>
+
+                <!-- Vela 3: Suculenta -->
+                <div class="glass-card overflow-hidden group hover:border-gold/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/vela_suculenta.webp" alt="Vela Suculenta Botánica" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/30 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-emerald-600/90 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Hiper-Realista</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-2xl font-bold text-white mb-2">Vela Suculenta Botánica</h4>
+                        <p class="text-base md:text-lg text-gray-300 leading-relaxed">Modelado tridimensional de vegetación botánica en cera de soja eco-friendly con matices florales y aromas herbales.</p>
+                    </div>
+                </div>
+
+                <!-- Vela 4: Repostería -->
+                <div class="glass-card overflow-hidden group hover:border-gold/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/vela_reposteria.webp" alt="Vela Estilo Repostería" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/30 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-pink-600/90 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Viral TikTok</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-2xl font-bold text-white mb-2">Vela Estilo Repostería</h4>
+                        <p class="text-base md:text-lg text-gray-300 leading-relaxed">Efecto crema batida y coberturas decorativas irresistibles que llaman la atención de inmediato en feeds y reels.</p>
+                    </div>
+                </div>
+
+                <!-- Vela 5: Microperlada -->
+                <div class="glass-card overflow-hidden group hover:border-gold/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/vela_microperlada.webp" alt="Vela Microperlada" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/30 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-purple-600/90 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Textura Fina</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-2xl font-bold text-white mb-2">Vela Cera Microperlada</h4>
+                        <p class="text-base md:text-lg text-gray-300 leading-relaxed">Cera granulada de combustión ultralenta y quemado parejo, ideal para recipientes cilíndricos y centros de mesa.</p>
+                    </div>
+                </div>
+
+                <!-- Vela 6: Capuchino -->
+                <div class="glass-card overflow-hidden group hover:border-gold/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/vela_capuchino.webp" alt="Vela Estilo Capuchino" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/30 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-amber-700/90 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Aroma Café</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-2xl font-bold text-white mb-2">Vela Cremosa Capuchino</h4>
+                        <p class="text-base md:text-lg text-gray-300 leading-relaxed">Aroma cálido y envolvente, con un diseño hiper-realista que imita el café cremoso, perfecto para ambientar y deleitar los sentidos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOQUE 7: OFERTA IRRESISTIBLE & BLOQUE 8: BONOS -->
+    <section id="oferta" class="bg-dark pt-4 pb-20 px-4 relative">
+        <div class="glow-orb top-0 right-0"></div>
+        <div class="glow-orb bottom-0 left-0"></div>
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="text-center mb-4 mt-0">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">La infraestructura completa, <span class="text-gradient">en tus manos hoy</span></h2>
+                <p class="text-gray-300 text-lg mb-0 relative z-20">Con el Sistema Eco-Boutique 360 (Videocurso Completo) obtendrás acceso inmediato y de por vida a la plataforma, lecciones HD y comunidad privada.</p>
+                <img src="assets/mockup_velas_artesanales.webp" alt="Mockup Velas Artesanales" class="w-full max-w-2xl mx-auto my-6 drop-shadow-2xl hover:scale-105 transition-transform duration-500 relative z-0" onerror="this.style.display='none'" loading="lazy">
+                
+                <div class="text-gray-400 relative z-20">Valor Normal: <span class="line-through text-red-500 font-bold ml-1">$97 USD</span></div>
+            </div>
+
+            <div class="text-center mb-10 relative z-20">
+                <h3 class="text-xl md:text-2xl font-bold text-gold flex flex-col md:flex-row items-center justify-center gap-2">
+                    <svg class="w-8 h-8 text-red-500 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    <span class="text-center">ATENCIÓN: <span class="bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent">SOLO SI TE INSCRIBES HOY</span> RECIBES ESTOS 3 BONOS PREMIUM GRATIS</span>
+                </h3>
+                <p class="text-red-400 font-semibold mt-2 text-sm">(Estos bonos desaparecerán a la medianoche)</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-16">
+                <!-- Bono 1 -->
+                <div class="glass-card p-6 text-center relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 bg-accent text-white text-xs font-bold px-3 py-1 rounded-bl-lg">GRATIS HOY</div>
+                    <h4 class="font-bold text-xl mb-4 text-gold">Masterclass Velas Navideñas</h4>
+                    <img src="assets/bono_1.webp" alt="Masterclass Velas Navideñas" class="w-full max-w-[220px] mx-auto mb-4 drop-shadow-xl group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'" loading="lazy">
+                    <p class="text-gray-300 text-sm mb-4">Aprende a crear diseños festivos de altísima demanda y asegura ingresos masivos durante la temporada de fin de año.</p>
+                    <div class="text-base md:text-lg text-gray-500">Valor: <span class="line-through text-red-500 font-bold">$47 USD</span></div>
+                </div>
+
+                <!-- Bono 2 -->
+                <div class="glass-card p-6 text-center relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 bg-accent text-white text-xs font-bold px-3 py-1 rounded-bl-lg">GRATIS HOY</div>
+                    <h4 class="font-bold text-xl mb-4 text-gold">Curso Completo Jabones Botánicos</h4>
+                    <img src="assets/bono_2.webp" alt="Curso Completo Jabones Botánicos" class="w-full max-w-[220px] mx-auto mb-4 drop-shadow-xl group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'" loading="lazy">
+                    <p class="text-gray-300 text-sm mb-4">Domina la saponificación en frío y crea jabones de lujo que triplicarán el valor de tus colecciones y canastas de regalo.</p>
+                    <div class="text-base md:text-lg text-gray-500">Valor: <span class="line-through text-red-500 font-bold">$67 USD</span></div>
+                </div>
+
+                <!-- Bono 3 -->
+                <div class="glass-card p-6 text-center relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 bg-accent text-white text-xs font-bold px-3 py-1 rounded-bl-lg">GRATIS HOY</div>
+                    <h4 class="font-bold text-xl mb-4 text-gold">La Bóveda (Mega-Pack 18 en 1)</h4>
+                    <img src="assets/bono_3.webp" alt="La Bóveda del Emprendedor" class="w-full max-w-[220px] mx-auto mb-4 drop-shadow-xl group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'" loading="lazy">
+                    <p class="text-gray-300 text-sm mb-4">18 herramientas invaluables: Directorio de Proveedores, Calculadora de Precios, Plantillas de Instagram y 15 recursos estratégicos más.</p>
+                    <div class="text-base md:text-lg text-gray-500">Valor: <span class="line-through text-red-500 font-bold">$147 USD</span></div>
+                </div>
+            </div>
+
+            <!-- BLOQUE 9: ANCLAJE FINAL Y PRECIO -->
+            <div class="bg-light text-slate-900 rounded-3xl p-8 md:p-12 text-center shadow-2xl relative overflow-hidden transform hover:-translate-y-1 transition-transform">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-accent/20 rounded-full blur-2xl"></div>
+                
+                <h3 class="text-2xl font-bold mb-2">Valor Total del Sistema:</h3>
+                <div class="text-4xl md:text-5xl font-black text-gray-400 line-through decoration-red-500 mb-6">$358 USD</div>
+                
+                <!-- Countdown de Urgencia -->
+                <div class="inline-block bg-red-50 border border-red-200 text-red-600 font-bold px-5 py-2 rounded-lg mb-6 mt-2 shadow-sm animate-pulse">
+                    <span class="mr-2 uppercase text-xs tracking-wider">La oferta 3x1 expira en:</span> 
+                    <span id="countdown" class="text-xl tabular-nums">15:00</span>
+                </div>
+                
+                <h3 id="inversion-hoy" class="text-xl font-bold mb-2 scroll-mt-12 md:scroll-mt-20">Tu inversión hoy:</h3>
+                <div class="text-6xl md:text-8xl font-black text-accent mb-4 tracking-[0.1em]">$37.50 <span class="text-2xl text-slate-500 tracking-[0.15em]">USD</span></div>
+                <p class="text-sm font-semibold text-slate-500 mb-8 uppercase tracking-widest">Un solo pago • Acceso de por vida</p>
+
+                <p class="max-w-xl mx-auto text-slate-600 mb-8 italic">"Por menos de lo que cuesta una cena para dos en un restaurante promedio, obtén la llave maestra para construir un negocio que proteja tu futuro financiero."</p>
+
+                <a href="https://go.hotmart.com/N106877301C?ap=e9cb" aria-label="Comprar en Hotmart" class="block w-full md:w-auto mx-auto max-w-md bg-accent hover:bg-[#c96c53] text-white font-black py-5 px-8 rounded-2xl text-2xl shadow-[0_10px_30px_rgba(224,122,95,0.4)] transition-all transform hover:scale-[1.02]">
+                    Sí, quiero acceso inmediato por $37.50
+                </a>
+                
+                <div class="mt-4 text-xs font-bold text-slate-400 flex flex-col items-center justify-center gap-3">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                        PAGO 100% SEGURO Y CIFRADO
+                    </div>
+                    <!-- Medios de Pago -->
+                    <div class="mt-3 w-full flex justify-center opacity-90 hover:opacity-100 transition-opacity">
+                        <img src="assets/paggo-1-2417181.webp" alt="Medios de Pago Seguros" class="h-8 md:h-12 object-contain" onerror="this.style.display='none'" loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOQUE 10: EL STACK DE VALOR (Resumen Final) -->
+            <div class="mt-20 glass-card p-8 md:p-12">
+                <h2 class="text-3xl font-bold text-center mb-10"><span class="text-gradient">Esto es todo</span> lo que te llevas hoy:</h2>
+                
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="order-2 md:order-1 space-y-4">
+                        <ul class="space-y-4 font-medium text-lg">
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-accent mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Curso Completo: Sistema Eco-Boutique 360 <span class="text-gray-400 text-sm ml-2">(Valor: $97)</span></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-accent mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Bono 1: Masterclass Velas Navideñas <span class="text-gray-400 text-sm ml-2">(Valor: $47)</span></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-accent mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Bono 2: Curso Jabones Artesanales Botánicos <span class="text-gray-400 text-sm ml-2">(Valor: $67)</span></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-accent mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Bono 3: La Bóveda (Mega-Pack 18 Recursos Exclusivos) <span class="text-gray-400 text-sm ml-2">(Valor: $147)</span></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-gold mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Acceso de por Vida y Actualizaciones <span class="text-gold text-sm ml-2">(Invaluable)</span></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-gold mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Garantía Incondicional de 7 Días</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <img src="assets/mockup_velas_artesanales.webp" alt="Mockup de todo el paquete" class="w-full h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOQUE 11: TESTIMONIOS -->
+    <section class="bg-light text-slate-900 py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16">Auditoría de Resultados: <span class="text-accent">Casos Reales</span></h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Testimonio 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex text-yellow-400 mb-3"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
+                    <p class="text-base md:text-lg text-gray-600 mb-4 italic leading-relaxed">"Con el directorio de proveedores y la calculadora, recuperé mi inversión de $37.50 en la primera semana vendiendo solo 3 velas a mis compañeras de oficina."</p>
+                    <p class="font-bold text-sm text-slate-900">- Marta Gómez, 34 años</p>
+                </div>
+                <!-- Testimonio 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex text-yellow-400 mb-3"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
+                    <p class="text-base md:text-lg text-gray-600 mb-4 italic leading-relaxed">"Había visto videos en YouTube, pero siempre se me hundía la cera. El sistema de temperatura resolvió todo el primer día. Ya tengo 45 seguidores orgánicos."</p>
+                    <p class="font-bold text-sm text-slate-900">- Elena Rojas, 28 años</p>
+                </div>
+                <!-- Testimonio 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex text-yellow-400 mb-3"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
+                    <p class="text-base md:text-lg text-gray-600 mb-4 italic leading-relaxed">"Nunca pensé que trabajar con aromas pudiera ser tan relajante. Es mi terapia y encima gano dinero. El mejor autoregalo que me he hecho."</p>
+                    <p class="font-bold text-sm text-slate-900">- Sofía L., 41 años</p>
+                </div>
+                <!-- Testimonio 4 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex text-yellow-400 mb-3"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
+                    <p class="text-base md:text-lg text-gray-600 mb-4 italic leading-relaxed">"Las plantillas de Instagram son magia. Literalmente copié el texto, subí una foto como enseñan en el curso, y tuve mi primer pedido en 48 horas."</p>
+                    <p class="font-bold text-sm text-slate-900">- Andrea V., 25 años</p>
+                </div>
+                <!-- Testimonio 5 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex text-yellow-400 mb-3"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
+                    <p class="text-base md:text-lg text-gray-600 mb-4 italic leading-relaxed">"Creía que mi mercado estaba saturado, pero cuando apliqué el concepto Eco-Boutique y subí mis precios, la gente empezó a valorarme más."</p>
+                    <p class="font-bold text-sm text-slate-900">- Carmen T., 50 años</p>
+                </div>
+                <!-- Testimonio 6 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex text-yellow-400 mb-3"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
+                    <p class="text-base md:text-lg text-gray-600 mb-4 italic leading-relaxed">"Poder hacer esto desde mi cocina, mientras mis hijos duermen, me ha dado una sensación de control sobre mi vida que había perdido."</p>
+                    <p class="font-bold text-sm text-slate-900">- Lucía Fernández, 31 años</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOQUE 12: GARANTÍA & FAQ -->
+    <section class="bg-dark py-20 px-4 relative">
+        <div class="max-w-3xl mx-auto">
+            
+            <div class="text-center mb-16">
+                <div class="guarantee-seal mb-6">
+                    <div class="days">7</div>
+                    <div class="text">Días de<br>Garantía</div>
+                </div>
+                <h2 class="text-3xl font-bold mb-4">Garantía Incondicional de 7 Días</h2>
+                <p class="text-gray-300">No tienes absolutamente nada que perder. Entra hoy al Sistema Eco-Boutique 360. Si en los próximos 7 días descubres que el contenido no es para ti, o si simplemente no te gusta mi tono de voz en los videos, mándame un correo y te devolveré hasta el último centavo. Sin preguntas, sin fricciones. Proteger tu dinero es nuestra prioridad.</p>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-bold text-center mb-8 border-b border-white/10 pb-4">Preguntas Frecuentes</h3>
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <div class="bg-white/5 border border-white/10 rounded-lg overflow-hidden">
+                        <button class="accordion-btn w-full px-6 py-4 text-left font-bold flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            ¿Es un solo pago o me van a cobrar una mensualidad?
+                            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content px-6 text-gray-300 text-sm bg-black/20">
+                            Es un pago ÚNICO. Pagas $37.50 USD hoy y tienes acceso de por vida a la plataforma, los bonos y todas las futuras actualizaciones sin costos ocultos.
+                        </div>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="bg-white/5 border border-white/10 rounded-lg overflow-hidden">
+                        <button class="accordion-btn w-full px-6 py-4 text-left font-bold flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            Nunca he hecho una vela en mi vida, ¿esto es para mí?
+                            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content px-6 text-gray-300 text-sm bg-black/20">
+                            Totalmente. El sistema está diseñado desde cero absoluto. Te guiamos paso a paso, desde dónde comprar la cera hasta cómo mezclarla sin errores.
+                        </div>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="bg-white/5 border border-white/10 rounded-lg overflow-hidden">
+                        <button class="accordion-btn w-full px-6 py-4 text-left font-bold flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            ¿Necesito mucho dinero para comprar los materiales iniciales?
+                            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content px-6 text-gray-300 text-sm bg-black/20">
+                            No. Te enseñamos cómo empezar tu producción con una inversión mínima, utilizando herramientas básicas de cocina y escalando a medida que generas tus primeras ventas.
+                        </div>
+                    </div>
+                    <!-- FAQ 4 -->
+                    <div class="bg-white/5 border border-white/10 rounded-lg overflow-hidden">
+                        <button class="accordion-btn w-full px-6 py-4 text-left font-bold flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            ¿Desde qué dispositivos puedo ver el curso?
+                            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content px-6 text-gray-300 text-sm bg-black/20">
+                            Puedes acceder desde tu celular, tablet o computadora, en cualquier momento y desde cualquier parte del mundo. Las clases están siempre disponibles.
+                        </div>
+                    </div>
+                    <!-- FAQ 5 -->
+                    <div class="bg-white/5 border border-white/10 rounded-lg overflow-hidden">
+                        <button class="accordion-btn w-full px-6 py-4 text-left font-bold flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            ¿Qué pasa si tengo dudas durante el proceso?
+                            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content px-6 text-gray-300 text-sm bg-black/20">
+                            Tendrás acceso a nuestra zona de comentarios debajo de cada lección donde resolveremos todas tus dudas para asegurarnos de que avances rápido.
+                        </div>
+                    </div>
+                    <!-- FAQ 6 -->
+                    <div class="bg-white/5 border border-white/10 rounded-lg overflow-hidden">
+                        <button class="accordion-btn w-full px-6 py-4 text-left font-bold flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            ¿Cómo se entrega el material después del pago?
+                            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content px-6 text-gray-300 text-sm bg-black/20">
+                            Al realizar tu pago seguro a través de Hotmart, recibirás inmediatamente un correo electrónico con tu usuario y contraseña para acceder a la plataforma de alumnos en cuestión de segundos.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer Simple -->
+    <footer class="bg-black py-8 text-center text-gray-500 text-sm border-t border-white/10">
+        <p>© 2026 Sistema Eco-Boutique. Todos los derechos reservados.</p>
+        <p class="mt-2 text-xs">Este sitio no forma parte de Facebook Inc. No es patrocinado por Facebook.</p>
+    </footer>
+
+    <script>
+        function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            const isOpen = content.classList.contains('open');
+            
+            // Close all
+            document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+            document.querySelectorAll('.accordion-btn').forEach(b => b.classList.remove('open'));
+            
+            // Open clicked if it was closed
+            if (!isOpen) {
+                content.classList.add('open');
+                btn.classList.add('open');
+            }
+        }
+        
+        // Countdown (Reinicia a medianoche local)
+        const countdownEl = document.getElementById('countdown');
+        if(countdownEl) {
+            function updateCountdown() {
+                const now = new Date();
+                const midnight = new Date(now);
+                midnight.setHours(24, 0, 0, 0);
+                
+                const diffMs = midnight - now;
+                const h = Math.floor(diffMs / (1000 * 60 * 60));
+                const m = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diffMs % (1000 * 60)) / 1000);
+                
+                countdownEl.innerText = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+            }
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+    </script>
+</body>
+</html>
+
+
