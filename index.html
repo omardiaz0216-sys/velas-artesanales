@@ -6,6 +6,28 @@
     <title>Sistema Eco-Boutique 360 | Curso de Velas y Jabones Artesanales</title>
     <meta name="description" content="El Sistema Rentable de Velas y Jabones Botánicos. Convierte tu Cocina en un Estudio Aromático Premium en 30 días sin experiencia previa.">
     <link rel="stylesheet" href="styles.css">
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    // Reemplaza 'TU_PIXEL_ID' con tu ID de Pixel real desde Meta Events Manager
+    const pixelId = 'TU_PIXEL_ID';
+    if (pixelId && pixelId !== 'TU_PIXEL_ID') {
+        fbq('init', pixelId);
+        fbq('track', 'PageView');
+    }
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=TU_PIXEL_ID&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     <style>
         html { scroll-behavior: smooth; }
         .glow-orb { position: absolute; background: rgba(224, 122, 95, 0.15); filter: blur(120px); border-radius: 50%; z-index: 0; width: 50vw; height: 50vh; pointer-events: none; }
@@ -677,6 +699,51 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
             updateCountdown();
             setInterval(updateCountdown, 1000);
         }
+
+        // Motor de Arrastre de Parámetros UTM & fbclid para Hotmart (Atribución Asegurada)
+        (function() {
+            const trackingParams = ['fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+            
+            // 1. Guardar parámetros de la URL en sessionStorage (persistencia entre recargas)
+            const urlParams = new URLSearchParams(window.location.search);
+            trackingParams.forEach(param => {
+                if (urlParams.has(param)) {
+                    sessionStorage.setItem(param, urlParams.get(param));
+                }
+            });
+
+            // 2. Función para inyectar parámetros guardados en los enlaces de Hotmart
+            function updateHotmartLinks() {
+                const storedParams = {};
+                trackingParams.forEach(param => {
+                    const val = sessionStorage.getItem(param);
+                    if (val) storedParams[param] = val;
+                });
+
+                if (Object.keys(storedParams).length === 0) return;
+
+                const links = document.querySelectorAll('a[href*="hotmart.com"]');
+                links.forEach(link => {
+                    try {
+                        const url = new URL(link.href);
+                        for (const [key, val] of Object.entries(storedParams)) {
+                            url.searchParams.set(key, val);
+                        }
+                        link.href = url.toString();
+                        console.log('Enlace de Hotmart optimizado con parámetros:', link.href);
+                    } catch (e) {
+                        console.error('Error al inyectar parámetros de tracking en enlace:', e);
+                    }
+                });
+            }
+
+            // Ejecutar cuando el DOM esté listo
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', updateHotmartLinks);
+            } else {
+                updateHotmartLinks();
+            }
+        })();
     </script>
 </body>
 </html>
