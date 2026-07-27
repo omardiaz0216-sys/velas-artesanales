@@ -3,355 +3,602 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de Anuncios — Sistema Eco-Boutique 360</title>
+    <title>Ads Generator 2.0 - Andrómeda Ready</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- html2canvas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
                     colors: {
                         dark: '#0F1714',
                         light: '#FDFBF7',
                         accent: '#E07A5F',
-                        gold: '#D4AF37',
-                        lightgold: '#FDE08B'
-                    },
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
+                        gold: '#D4AF37'
                     }
                 }
             }
         }
     </script>
     <style>
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #0b0f0d;
-            color: #FDFBF7;
-        }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0b0f0d;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #202b26;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #E07A5F;
-        }
+        body { background-color: #f3f4f6; }
+        /* El canvas real que se exporta es de 1080x1080 */
+        .ad-canvas { width: 1080px; height: 1080px; position: relative; overflow: hidden; background-color: #0F1714; }
+        .ad-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Rediseño: Gradiente inferior más sutil pero oscuro, respetando el centro de la imagen */
+        .gradient-overlay-bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 60%; background: linear-gradient(to top, rgba(15, 23, 20, 0.95) 0%, rgba(15, 23, 20, 0.7) 40%, transparent 100%); }
+        .gradient-overlay-top { position: absolute; top: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to bottom, rgba(15, 23, 20, 0.9) 0%, transparent 100%); }
+        
+        /* Contenedor de escalado para la vista web */
+        .preview-wrapper { width: 100%; max-width: 400px; aspect-ratio: 1/1; position: relative; overflow: hidden; border-radius: 0.75rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); border: 4px solid white; }
+        .preview-wrapper .ad-canvas { transform-origin: top left; }
+
+        .tab-btn.active { border-bottom: 4px solid #E07A5F; color: #E07A5F; font-weight: bold; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col md:flex-row">
-
-    <!-- SIDEBAR DE CONTROLES -->
-    <div class="w-full md:w-96 bg-[#0F1714] border-r border-white/10 p-6 flex flex-col justify-between overflow-y-auto md:h-screen">
-        <div class="space-y-6">
-            <div>
-                <h1 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gold to-lightgold">
-                    FÁBRICA DE ADS
-                </h1>
-                <p class="text-xs text-gray-400 mt-1">Generador de Banners HTML5 — ADN Alma</p>
-            </div>
-            
-            <hr class="border-white/5">
-
-            <!-- Selección de Ángulo -->
-            <div class="space-y-2">
-                <label class="block text-xs font-bold uppercase tracking-wider text-accent">1. Ángulo de Venta</label>
-                <select id="angleSelect" class="w-full bg-[#1b2722] border border-white/10 rounded-xl p-3 text-sm focus:border-accent outline-none text-white transition-all">
-                    <option value="dolor">Ángulo A: Dolor (Evitación)</option>
-                    <option value="beneficio" selected>Ángulo B: Beneficio (Transformación)</option>
-                    <option value="curiosidad">Ángulo C: Curiosidad (Secreto)</option>
-                </select>
-            </div>
-
-            <!-- Selección de Formato -->
-            <div class="space-y-2">
-                <label class="block text-xs font-bold uppercase tracking-wider text-accent">2. Formato del Banner</label>
-                <div class="grid grid-cols-2 gap-3">
-                    <button id="btnSquare" class="py-2 px-3 bg-accent text-white border border-accent rounded-xl text-sm font-semibold transition-all">
-                        Square (1:1)
-                    </button>
-                    <button id="btnStories" class="py-2 px-3 bg-transparent text-gray-300 border border-white/10 rounded-xl text-sm font-semibold hover:bg-white/5 transition-all">
-                        Stories (9:16)
-                    </button>
-                </div>
-            </div>
-
-            <hr class="border-white/5">
-
-            <!-- Edición de Texto -->
-            <div class="space-y-4">
-                <label class="block text-xs font-bold uppercase tracking-wider text-accent">3. Personalizar Textos</label>
-                
-                <div class="space-y-1">
-                    <label class="text-xs text-gray-400">Texto Gancho (Hook)</label>
-                    <textarea id="textHook" rows="2" class="w-full bg-[#1b2722] border border-white/10 rounded-xl p-3 text-sm focus:border-accent outline-none text-white transition-all" placeholder="Escribe el gancho aquí..."></textarea>
-                </div>
-
-                <div class="space-y-1">
-                    <label class="text-xs text-gray-400">Texto Secundario (Promesa)</label>
-                    <textarea id="textSub" rows="3" class="w-full bg-[#1b2722] border border-white/10 rounded-xl p-3 text-sm focus:border-accent outline-none text-white transition-all" placeholder="Escribe el subtexto aquí..."></textarea>
-                </div>
-            </div>
-
-            <hr class="border-white/5">
-
-            <!-- Configuración del CTA -->
-            <div class="space-y-4">
-                <label class="block text-xs font-bold uppercase tracking-wider text-accent">4. Llamado a la Acción (CTA)</label>
-                
-                <div class="flex items-center justify-between">
-                    <span class="text-xs text-gray-400">Mostrar Botón CTA</span>
-                    <input type="checkbox" id="toggleCta" checked class="w-4 h-4 accent-accent rounded cursor-pointer">
-                </div>
-
-                <div class="space-y-1">
-                    <label class="text-xs text-gray-400">Texto del Botón</label>
-                    <input type="text" id="ctaText" class="w-full bg-[#1b2722] border border-white/10 rounded-xl p-3 text-sm focus:border-accent outline-none text-white transition-all" value="VER MÉTODO">
-                </div>
-                
-                <div class="space-y-1">
-                    <label class="text-xs text-gray-400">Color del Botón</label>
-                    <div class="grid grid-cols-3 gap-2">
-                        <button onclick="setCtaColor('#E07A5F')" class="h-8 rounded bg-accent border border-white/10 hover:scale-105 transition-transform"></button>
-                        <button onclick="setCtaColor('#D4AF37')" class="h-8 rounded bg-gold border border-white/10 hover:scale-105 transition-transform"></button>
-                        <button onclick="setCtaColor('rgba(255,255,255,0.08)')" class="h-8 rounded bg-white/10 border border-white/20 hover:scale-105 transition-transform text-[10px] font-bold">GLASS</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-8">
-            <button id="btnExport" class="w-full bg-gradient-to-r from-accent to-[#c96c53] hover:from-[#c96c53] hover:to-[#b5583f] text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-sm flex items-center justify-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                DESCARGAR BANNER
-            </button>
-        </div>
-    </div>
-
-    <!-- AREA DE PREVIEW -->
-    <div class="flex-1 flex items-center justify-center p-6 bg-[#080b09] overflow-auto min-h-[500px]">
+<body class="p-4 md:p-8 font-sans">
+    
+    <div class="max-w-7xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
         
-        <!-- Contenedor del Canvas Preview con ADN Alma -->
-        <div id="adCanvas" class="relative overflow-hidden shadow-2xl rounded-2xl border border-white/10 transition-all bg-dark flex flex-col justify-end" style="width: 500px; height: 500px;">
-            
-            <!-- Imagen de Fondo Dinámica -->
-            <img id="bgImg" src="assets/ad_bg_beneficio.webp" alt="Ad Background" class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none">
-            
-            <!-- Degradado Overlay Gradiente ADN Alma (para asegurar legibilidad de textos) -->
-            <div id="overlay" class="absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/65 to-transparent z-10"></div>
-            
-            <!-- Brillo Ambiental Glow (Opcional del ADN) -->
-            <div class="absolute -top-10 -left-10 w-64 h-64 bg-accent/15 rounded-full blur-[100px] z-10 pointer-events-none"></div>
-            
-            <!-- Contenido del Banner (Textos y CTAs) -->
-            <div class="relative z-20 p-8 space-y-6 flex flex-col justify-end h-full">
-                
-                <!-- Badge Superior -->
-                <div class="self-start">
-                    <span id="badge" class="bg-accent/20 border border-accent/40 text-accent text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
-                        Eco-Boutique 360
-                    </span>
-                </div>
+        <!-- Header & Tabs -->
+        <div class="bg-dark p-6 text-white text-center">
+            <h1 class="text-3xl font-extrabold mb-2">Ads Generator <span class="text-accent">2.0</span></h1>
+            <p class="text-gray-400 text-sm">Creación de Portafolio Visual - Optimizado para Meta Andrómeda</p>
+        </div>
+        
+        <div class="flex border-b border-gray-200 bg-gray-50">
+            <button class="tab-btn active flex-1 py-4 text-center text-gray-500 hover:text-gray-700 transition" onclick="switchTab('single')">Anuncio Único (Imagen)</button>
+            <button class="tab-btn flex-1 py-4 text-center text-gray-500 hover:text-gray-700 transition" onclick="switchTab('carousel')">Carrusel Secuencial (4 Láminas)</button>
+        </div>
 
-                <!-- Textos del Copy -->
-                <div class="space-y-3">
-                    <h2 id="previewHook" class="text-3xl font-black leading-tight text-white tracking-tight">
-                        Tu Cocina. Tu Propio Estudio Aromático Lujoso.
-                    </h2>
-                    <p id="previewSub" class="text-base text-gray-300 font-light leading-relaxed">
-                        Crea velas y jabones botánicos premium que tus clientes desearán en Instagram. Únete por solo $37.50 USD hoy.
-                    </p>
-                </div>
+        <div class="p-6 md:p-10">
+            
+            <!-- TABS 1: SINGLE AD -->
+            <div id="tab-single" class="tab-content active">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    <!-- Controles Single -->
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 text-blue-800 p-4 rounded-lg text-sm mb-6">
+                            <strong>Políticas Meta Ads:</strong> Recuerda no usar la palabra "Ansiedad", "Depresión" ni "TDAH". Mantén el misterio y no reveles el nombre del curso en el anuncio.
+                        </div>
 
-                <!-- Botón CTA Falso -->
-                <div id="ctaContainer" class="flex items-center justify-between border-t border-white/10 pt-4 mt-2">
-                    <span class="text-xs text-gray-400 uppercase tracking-widest">Últimos Cupos 3x1</span>
-                    <div id="previewCta" class="px-6 py-3 rounded-xl font-black text-sm tracking-wider shadow-lg transition-transform" style="background-color: #E07A5F; color: white;">
-                        VER MÉTODO
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Imagen de Fondo</label>
+                            <select id="bgSelect" class="w-full border-gray-300 rounded-lg p-3 bg-white border-2 focus:border-accent focus:ring-accent outline-none font-medium">
+                                <option value="assets/ad_bg_dolor.webp" selected>Imagen 1: Dolor (Frustración / Evitación)</option>
+                                <option value="assets/ad_bg_beneficio.webp">Imagen 2: Beneficio (Resultados / Lujo)</option>
+                                <option value="assets/ad_bg_curiosidad.webp">Imagen 3: Curiosidad (El Secreto Oculto)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Cargar Frases Preestablecidas</label>
+                            <select id="textPresetSelect" class="w-full border-gray-300 rounded-lg p-3 bg-white border-2 focus:border-accent focus:ring-accent outline-none font-medium">
+                                <option value="" disabled selected>-- Selecciona un preset para cargar --</option>
+                                <option value="dolor">Ángulo del Dolor (Frustración)</option>
+                                <option value="beneficio">Ángulo de Beneficio (Resultados)</option>
+                                <option value="curiosidad">Ángulo de Curiosidad (Secreto)</option>
+                            </select>
+                            <p class="text-xs text-gray-500 mt-1">Puedes elegir cualquier imagen de fondo y combinarla libremente con cualquier preset de textos o editarlos a tu gusto.</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Etiqueta Superior (Badge)</label>
+                            <input type="text" id="badgeInput" class="w-full border-gray-300 rounded-lg p-3 bg-gray-50 border focus:border-accent outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Gancho Principal (Hook)</label>
+                            <textarea id="hookInput" rows="3" class="w-full border-gray-300 rounded-lg p-3 bg-gray-50 border focus:border-accent outline-none"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Subtítulo (Generador de Curiosidad)</label>
+                            <input type="text" id="subInput" class="w-full border-gray-300 rounded-lg p-3 bg-gray-50 border focus:border-accent outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Alineación del Texto</label>
+                            <div class="flex gap-4 text-sm font-bold text-gray-600">
+                                <label class="flex items-center gap-1"><input type="radio" name="align" value="center" class="accent-accent"> Centro</label>
+                                <label class="flex items-center gap-1"><input type="radio" name="align" value="bottom" checked class="accent-accent"> Abajo</label>
+                                <label class="flex items-center gap-1"><input type="radio" name="align" value="top" class="accent-accent"> Arriba</label>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-200">
+                            <button id="downloadSingleBtn" class="w-full bg-accent hover:bg-[#c96c53] text-white font-bold py-4 rounded-xl shadow-lg transition-transform transform hover:scale-[1.02] text-lg flex items-center justify-center gap-2">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                Exportar Anuncio PNG (1080x1080)
+                            </button>
+                        </div>
                     </div>
+
+                    <!-- Preview Single -->
+                    <div class="flex flex-col items-center justify-start pt-6">
+                        <div class="preview-wrapper" id="singleWrapper">
+                            <div id="singleCanvas" class="ad-canvas">
+                                <img id="singleBg" src="assets/ad_bg_dolor.webp" class="ad-bg" alt="Fondo" onerror="this.src='https://images.unsplash.com/photo-1602928308431-1558235cbbf4?q=80&w=1080&auto=format&fit=crop'">
+                                
+                                <div id="overlayTop" class="gradient-overlay-top hidden"></div>
+                                <div id="overlayBottom" class="gradient-overlay-bottom block"></div>
+                                <div id="overlayCenter" class="absolute inset-0 bg-dark/60 hidden"></div>
+                                
+                                <!-- Contenedor de Texto -->
+                                <div id="textContainer" class="absolute w-full p-16 flex flex-col justify-end bottom-0 left-0">
+                                    
+                                    <div id="renderBadge" class="inline-block bg-gold text-dark px-6 py-2 rounded-full font-bold text-xl mb-6 w-max uppercase tracking-widest shadow-lg">
+                                        MÉTODO COMPROBADO
+                                    </div>
+
+                                    <h2 id="renderHook" class="text-white font-extrabold text-[3.5rem] leading-[1.1] mb-6 uppercase drop-shadow-xl" style="text-wrap: balance;">
+                                        CÓMO PASÉ DEL ESTRÉS Y LA RUTINA A FACTURAR DESDE CASA
+                                    </h2>
+                                    
+                                    <p id="renderSub" class="text-gray-300 text-3xl font-medium drop-shadow-md border-l-4 border-accent pl-6">
+                                        Descubre el negocio anticrisis oculto.
+                                    </p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+
+            <!-- TABS 2: CAROUSEL -->
+            <div id="tab-carousel" class="tab-content">
+                <div class="mb-6 flex items-center justify-between">
+                    <div>
+                        <h2 class="text-xl font-bold text-dark">Constructor de Carrusel</h2>
+                        <p class="text-sm text-gray-500">Diseña una secuencia de 4 imágenes para educar y retener la atención (Formato AIDA/PAS).</p>
+                    </div>
+                </div>
+
+                <!-- Grid de 4 Láminas -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    
+                    <!-- Slide 1 -->
+                    <div class="border rounded-xl p-4 bg-gray-50">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="text-xs font-bold text-gray-400 uppercase tracking-widest">Lámina 1: Gancho</div>
+                            <select id="bg_c1" class="border-gray-300 rounded p-1 text-xs bg-white border outline-none">
+                                <option value="assets/carousel_bg_1.webp" selected>Carrusel 1: Vela Iceberg</option>
+                                <option value="assets/carousel_bg_2.webp">Carrusel 2: Caos / Dolor</option>
+                                <option value="assets/carousel_bg_3.webp">Carrusel 3: Boutique Limpia</option>
+                                <option value="assets/carousel_bg_4.webp">Carrusel 4: Empaque Premium</option>
+                                <option value="assets/ad_bg_curiosidad.webp">Único: Curiosidad</option>
+                                <option value="assets/ad_bg_dolor.webp">Único: Dolor</option>
+                                <option value="assets/ad_bg_beneficio.webp">Único: Beneficio</option>
+                            </select>
+                        </div>
+                        <textarea id="c1_text" rows="3" class="w-full text-sm border-gray-300 rounded p-2 bg-white outline-none focus:border-accent">TODOS ME DIJERON QUE ERA UNA PÉSIMA IDEA...</textarea>
+                        
+                        <div class="mt-2 mb-3 flex gap-4 text-xs font-bold text-gray-600">
+                            <label class="flex items-center gap-1"><input type="radio" name="align_c1" value="center" checked class="accent-accent"> Centro</label>
+                            <label class="flex items-center gap-1"><input type="radio" name="align_c1" value="bottom" class="accent-accent"> Abajo</label>
+                            <label class="flex items-center gap-1"><input type="radio" name="align_c1" value="top" class="accent-accent"> Arriba</label>
+                        </div>
+
+                        <div class="preview-wrapper w-full max-w-[200px] mx-auto" id="wrap_c1">
+                            <div id="canvas_c1" class="ad-canvas">
+                                <img src="assets/carousel_bg_1.webp" class="ad-bg carousel-bg" alt="bg">
+                                <div id="overlayTop_c1" class="gradient-overlay-top hidden"></div>
+                                <div id="overlayBottom_c1" class="gradient-overlay-bottom hidden"></div>
+                                <div id="overlayCenter_c1" class="absolute inset-0 bg-dark/60 block"></div>
+                                
+                                <div id="container_c1" class="absolute inset-0 p-12 flex flex-col justify-center items-center text-center">
+                                    <h2 id="rend_c1" class="text-white font-extrabold text-[4.5rem] leading-[1.1] uppercase drop-shadow-xl" style="text-wrap: balance;">TODOS ME DIJERON QUE ERA UNA PÉSIMA IDEA...</h2>
+                                    <div id="extra_c1" class="mt-12 text-white/50 text-2xl font-bold animate-pulse">Desliza &rarr;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="border rounded-xl p-4 bg-gray-50">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="text-xs font-bold text-gray-400 uppercase tracking-widest">Lámina 2: Agitación</div>
+                            <select id="bg_c2" class="border-gray-300 rounded p-1 text-xs bg-white border outline-none">
+                                <option value="assets/carousel_bg_1.webp">Carrusel 1: Vela Iceberg</option>
+                                <option value="assets/carousel_bg_2.webp" selected>Carrusel 2: Caos / Dolor</option>
+                                <option value="assets/carousel_bg_3.webp">Carrusel 3: Boutique Limpia</option>
+                                <option value="assets/carousel_bg_4.webp">Carrusel 4: Empaque Premium</option>
+                                <option value="assets/ad_bg_curiosidad.webp">Único: Curiosidad</option>
+                                <option value="assets/ad_bg_dolor.webp">Único: Dolor</option>
+                                <option value="assets/ad_bg_beneficio.webp">Único: Beneficio</option>
+                            </select>
+                        </div>
+                        <textarea id="c2_text" rows="3" class="w-full text-sm border-gray-300 rounded p-2 bg-white outline-none focus:border-accent">El mercado de las "manualidades" y las velas baratas está saturado.</textarea>
+                        
+                        <div class="mt-2 mb-3 flex gap-4 text-xs font-bold text-gray-600">
+                            <label class="flex items-center gap-1"><input type="radio" name="align_c2" value="center" class="accent-accent"> Centro</label>
+                            <label class="flex items-center gap-1"><input type="radio" name="align_c2" value="bottom" checked class="accent-accent"> Abajo</label>
+                            <label class="flex items-center gap-1"><input type="radio" name="align_c2" value="top" class="accent-accent"> Arriba</label>
+                        </div>
+
+                        <div class="preview-wrapper w-full max-w-[200px] mx-auto" id="wrap_c2">
+                            <div id="canvas_c2" class="ad-canvas">
+                                <img src="assets/carousel_bg_2.webp" class="ad-bg carousel-bg" alt="bg">
+                                <div id="overlayTop_c2" class="gradient-overlay-top hidden"></div>
+                                <div id="overlayBottom_c2" class="gradient-overlay-bottom block"></div>
+                                <div id="overlayCenter_c2" class="absolute inset-0 bg-dark/60 hidden"></div>
+                                
+                                <div id="container_c2" class="absolute w-full p-16 flex flex-col justify-end bottom-0 left-0">
+                                    <h2 id="rend_c2" class="text-white font-bold text-[3rem] leading-[1.2] drop-shadow-lg" style="text-wrap: balance;">El mercado de las "manualidades" y las velas baratas está saturado.</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="border rounded-xl p-4 bg-gray-50">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="text-xs font-bold text-gray-400 uppercase tracking-widest">Lámina 3: Solución</div>
+                            <select id="bg_c3" class="border-gray-300 rounded p-1 text-xs bg-white border outline-none">
+                                <option value="assets/carousel_bg_1.webp">Carrusel 1: Vela Iceberg</option>
+                                <option value="assets/carousel_bg_2.webp">Carrusel 2: Caos / Dolor</option>
+                                <option value="assets/carousel_bg_3.webp" selected>Carrusel 3: Boutique Limpia</option>
+                                <option value="assets/carousel_bg_4.webp">Carrusel 4: Empaque Premium</option>
+                                <option value="assets/ad_bg_curiosidad.webp">Único: Curiosidad</option>
+                                <option value="assets/ad_bg_dolor.webp">Único: Dolor</option>
+                                <option value="assets/ad_bg_beneficio.webp">Único: Beneficio</option>
+                            </select>
+                        </div>
+                        <textarea id="c3_text" rows="3" class="w-full text-sm border-gray-300 rounded p-2 bg-white outline-none focus:border-accent">Pero el negocio de las Micro-Marcas Holísticas y botánicas está explotando.</textarea>
+                        
+                        <div class="mt-2 mb-3 flex gap-4 text-xs font-bold text-gray-600">
+                            <label class="flex items-center gap-1"><input type="radio" name="align_c3" value="center" class="accent-accent"> Centro</label>
+                            <label class="flex items-center gap-1"><input type="radio" name="align_c3" value="bottom" checked class="accent-accent"> Abajo</label>
+                            <label class="flex items-center gap-1"><input type="radio" name="align_c3" value="top" class="accent-accent"> Arriba</label>
+                        </div>
+
+                        <div class="preview-wrapper w-full max-w-[200px] mx-auto" id="wrap_c3">
+                            <div id="canvas_c3" class="ad-canvas">
+                                <img src="assets/carousel_bg_3.webp" class="ad-bg carousel-bg" alt="bg">
+                                <div id="overlayTop_c3" class="gradient-overlay-top hidden"></div>
+                                <div id="overlayBottom_c3" class="gradient-overlay-bottom block"></div>
+                                <div id="overlayCenter_c3" class="absolute inset-0 bg-dark/60 hidden"></div>
+                                
+                                <div id="container_c3" class="absolute w-full p-16 flex flex-col justify-end bottom-0 left-0">
+                                    <h2 id="rend_c3" class="text-white font-bold text-[3rem] leading-[1.2] drop-shadow-lg" style="text-wrap: balance;">Pero el negocio de las Micro-Marcas Holísticas y botánicas está explotando.</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="border rounded-xl p-4 bg-gray-50">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="text-xs font-bold text-gray-400 uppercase tracking-widest">Lámina 4: CTA</div>
+                            <select id="bg_c4" class="border-gray-300 rounded p-1 text-xs bg-white border outline-none">
+                                <option value="assets/carousel_bg_1.webp">Carrusel 1: Vela Iceberg</option>
+                                <option value="assets/carousel_bg_2.webp">Carrusel 2: Caos / Dolor</option>
+                                <option value="assets/carousel_bg_3.webp">Carrusel 3: Boutique Limpia</option>
+                                <option value="assets/carousel_bg_4.webp" selected>Carrusel 4: Empaque Premium</option>
+                                <option value="assets/ad_bg_curiosidad.webp">Único: Curiosidad</option>
+                                <option value="assets/ad_bg_dolor.webp">Único: Dolor</option>
+                                <option value="assets/ad_bg_beneficio.webp">Único: Beneficio</option>
+                            </select>
+                        </div>
+                        <textarea id="c4_text" rows="3" class="w-full text-sm border-gray-300 rounded p-2 bg-white outline-none focus:border-accent">Descubre el método para crear tu propia Eco-Boutique en 14 días.</textarea>
+                        
+                        <div class="mt-2 mb-3 flex gap-4 text-xs font-bold text-gray-600">
+                            <label class="flex items-center gap-1"><input type="radio" name="align_c4" value="center" checked class="accent-accent"> Centro</label>
+                            <label class="flex items-center gap-1"><input type="radio" name="align_c4" value="bottom" class="accent-accent"> Abajo</label>
+                            <label class="flex items-center gap-1"><input type="radio" name="align_c4" value="top" class="accent-accent"> Arriba</label>
+                        </div>
+
+                        <div class="preview-wrapper w-full max-w-[200px] mx-auto" id="wrap_c4">
+                            <div id="canvas_c4" class="ad-canvas">
+                                <img src="assets/carousel_bg_4.webp" class="ad-bg carousel-bg" alt="bg">
+                                <div id="overlayTop_c4" class="gradient-overlay-top hidden"></div>
+                                <div id="overlayBottom_c4" class="gradient-overlay-bottom hidden"></div>
+                                <div id="overlayCenter_c4" class="absolute inset-0 bg-dark/80 block"></div>
+                                
+                                <div id="container_c4" class="absolute inset-0 p-16 flex flex-col justify-center items-center text-center">
+                                    <h2 id="rend_c4" class="text-gold font-bold text-[3.5rem] leading-[1.1] mb-12" style="text-wrap: balance;">Descubre el método para crear tu propia Eco-Boutique en 14 días.</h2>
+                                    <div id="extra_c4" class="bg-accent text-white font-black text-[2.5rem] px-10 py-5 rounded-2xl shadow-lg">
+                                        MÁS INFORMACIÓN
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="border-t border-gray-200 pt-6">
+                    <button id="downloadCarouselBtn" class="w-full md:w-auto mx-auto bg-gold hover:bg-[#b5952f] text-dark font-black py-4 px-12 rounded-xl shadow-lg transition-transform transform hover:scale-[1.02] text-xl flex items-center justify-center gap-3">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        Exportar las 4 Láminas del Carrusel
+                    </button>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <!-- SCRIPT DE INTERACTIVIDAD -->
     <script>
-        // Datos de Copys de los 3 Ángulos
-        const copys = {
+        // --- 1. LÓGICA DE TABS ---
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('tab-' + tabId).classList.add('active');
+            updateScales();
+        }
+
+        // --- 2. LÓGICA DE ESCALADO CANVAS (PREVIEW WEB) ---
+        function applyScale(wrapperId, canvasId) {
+            const wrapper = document.getElementById(wrapperId);
+            const canvas = document.getElementById(canvasId);
+            if(wrapper && canvas) {
+                const scale = wrapper.clientWidth / 1080;
+                canvas.style.transform = `scale(${scale})`;
+            }
+        }
+        function updateScales() {
+            applyScale('singleWrapper', 'singleCanvas');
+            applyScale('wrap_c1', 'canvas_c1');
+            applyScale('wrap_c2', 'canvas_c2');
+            applyScale('wrap_c3', 'canvas_c3');
+            applyScale('wrap_c4', 'canvas_c4');
+        }
+        window.addEventListener('resize', updateScales);
+        setTimeout(updateScales, 100); 
+
+        // --- 3. LÓGICA DE ANUNCIO ÚNICO (DECOUPLED & MEMORY READY) ---
+        const textPresets = {
             dolor: {
-                bg: 'assets/ad_bg_dolor.webp',
-                badge: 'Evita Fracasar',
-                hook: '¿Haciendo velas que nadie te compra?',
-                sub: 'Deja de competir por centavos vendiendo velas baratas de $3 USD. Aprende el método de lujo en 14 días.',
-                cta: 'VER MÉTODO',
-                ctaBg: '#E07A5F'
+                badge: 'SISTEMA BUCLE CERRADO',
+                hook: 'CÓMO PASÉ DEL BUCLE ROTO A FACTURAR DESDE CASA',
+                sub: 'El secreto detrás de las Micro-Marcas Holísticas.'
             },
             beneficio: {
-                bg: 'assets/ad_bg_beneficio.webp',
-                badge: 'Eco-Boutique 360',
-                hook: 'Tu Cocina. Tu Propio Estudio Aromático Lujoso.',
-                sub: 'Crea velas y jabones botánicos premium que tus clientes desearán en Instagram. Únete por solo $37.50 USD hoy.',
-                cta: 'EMPEZAR HOY',
-                ctaBg: '#D4AF37'
+                badge: 'RESULTADOS RÁPIDOS',
+                hook: 'LLEVO 3 SEMANAS Y YA RECIBÍ MIS PRIMEROS PEDIDOS',
+                sub: 'Domina el Bucle Cerrado y retén el 100% de la ganancia.'
             },
             curiosidad: {
-                bg: 'assets/ad_bg_curiosidad.webp',
-                badge: 'Fórmula Secreta',
-                hook: '¿El ingrediente secreto de las velas de $35 USD?',
-                sub: 'No está en la cera... descubre el Código Sensorial que detiene el scroll de cualquiera. 3 Bonos Incluidos.',
-                cta: 'DESCUBRIR SECRETO',
-                ctaBg: 'rgba(255,255,255,0.08)'
+                badge: 'TENDENCIA OCULTA',
+                hook: 'POR QUÉ LAS MARCAS TEMEN AL BUCLE CERRADO...',
+                sub: 'Lo que las grandes empresas no quieren que sepas.'
             }
         };
 
-        // Elementos DOM
-        const angleSelect = document.getElementById('angleSelect');
-        const btnSquare = document.getElementById('btnSquare');
-        const btnStories = document.getElementById('btnStories');
-        const textHook = document.getElementById('textHook');
-        const textSub = document.getElementById('textSub');
-        const toggleCta = document.getElementById('toggleCta');
-        const ctaText = document.getElementById('ctaText');
-        const btnExport = document.getElementById('btnExport');
+        // Estado persistente para cada una de las 3 imágenes de fondo
+        const singleAdState = {
+            'assets/ad_bg_dolor.webp': {
+                badge: 'SISTEMA BUCLE CERRADO',
+                hook: 'CÓMO PASÉ DEL BUCLE ROTO A FACTURAR DESDE CASA',
+                sub: 'El secreto detrás de las Micro-Marcas Holísticas.',
+                align: 'bottom'
+            },
+            'assets/ad_bg_beneficio.webp': {
+                badge: 'RESULTADOS RÁPIDOS',
+                hook: 'LLEVO 3 SEMANAS Y YA RECIBÍ MIS PRIMEROS PEDIDOS',
+                sub: 'Domina el Bucle Cerrado y retén el 100% de la ganancia.',
+                align: 'bottom'
+            },
+            'assets/ad_bg_curiosidad.webp': {
+                badge: 'TENDENCIA OCULTA',
+                hook: 'POR QUÉ LAS MARCAS TEMEN AL BUCLE CERRADO...',
+                sub: 'Lo que las grandes empresas no quieren que sepas.',
+                align: 'bottom'
+            }
+        };
+
+        const bgSelect = document.getElementById('bgSelect');
+        const textPresetSelect = document.getElementById('textPresetSelect');
         
-        // Elementos del Canvas Preview
-        const adCanvas = document.getElementById('adCanvas');
-        const bgImg = document.getElementById('bgImg');
-        const badge = document.getElementById('badge');
-        const previewHook = document.getElementById('previewHook');
-        const previewSub = document.getElementById('previewSub');
-        const previewCta = document.getElementById('previewCta');
-        const ctaContainer = document.getElementById('ctaContainer');
+        const badgeInput = document.getElementById('badgeInput');
+        const hookInput = document.getElementById('hookInput');
+        const subInput = document.getElementById('subInput');
+        
+        const singleBg = document.getElementById('singleBg');
+        const renderBadge = document.getElementById('renderBadge');
+        const renderHook = document.getElementById('renderHook');
+        const renderSub = document.getElementById('renderSub');
 
-        let currentCtaBg = '#E07A5F';
+        const textContainer = document.getElementById('textContainer');
+        const overlayTop = document.getElementById('overlayTop');
+        const overlayBottom = document.getElementById('overlayBottom');
+        const overlayCenter = document.getElementById('overlayCenter');
 
-        // Inicialización
-        function init() {
-            updateContent('beneficio');
+        // Cargar estado inicial (Dolor)
+        let activeBg = 'assets/ad_bg_dolor.webp';
+        
+        function loadActiveState() {
+            const state = singleAdState[activeBg];
+            singleBg.src = activeBg;
+            
+            badgeInput.value = state.badge;
+            hookInput.value = state.hook;
+            subInput.value = state.sub;
+            
+            renderBadge.textContent = state.badge;
+            renderHook.textContent = state.hook;
+            renderSub.textContent = state.sub;
+            
+            document.querySelector(`input[name="align"][value="${state.align}"]`).checked = true;
+            applySingleAlign(state.align);
         }
 
-        // Cambiar contenido basado en el ángulo seleccionado
-        function updateContent(angleKey) {
-            const copy = copys[angleKey];
-            bgImg.src = copy.bg;
-            badge.innerText = copy.badge;
-            textHook.value = copy.hook;
-            textSub.value = copy.sub;
-            ctaText.value = copy.cta;
-            
-            previewHook.innerText = copy.hook;
-            previewSub.innerText = copy.sub;
-            previewCta.innerText = copy.cta;
-            
-            setCtaColor(copy.ctaBg);
-        }
-
-        // Event Listeners
-        angleSelect.addEventListener('change', (e) => {
-            updateContent(e.target.value);
-        });
-
-        textHook.addEventListener('input', (e) => {
-            previewHook.innerText = e.target.value;
-        });
-
-        textSub.addEventListener('input', (e) => {
-            previewSub.innerText = e.target.value;
-        });
-
-        ctaText.addEventListener('input', (e) => {
-            previewCta.innerText = e.target.value;
-        });
-
-        toggleCta.addEventListener('change', (e) => {
-            if (e.target.checked) {
-                ctaContainer.style.display = 'flex';
+        function applySingleAlign(alignValue) {
+            textContainer.classList.remove('top-0', 'bottom-0', 'inset-0', 'justify-start', 'justify-end', 'justify-center', 'items-center', 'text-center', 'pt-16');
+            if(alignValue === 'top') {
+                textContainer.classList.add('top-0', 'justify-start', 'pt-16');
+                overlayTop.classList.replace('hidden', 'block');
+                overlayBottom.classList.replace('block', 'hidden');
+                overlayCenter.classList.replace('block', 'hidden');
+            } else if (alignValue === 'bottom') {
+                textContainer.classList.add('bottom-0', 'justify-end');
+                overlayTop.classList.replace('block', 'hidden');
+                overlayBottom.classList.replace('hidden', 'block');
+                overlayCenter.classList.replace('block', 'hidden');
             } else {
-                ctaContainer.style.display = 'none';
-            }
-        });
-
-        // Configuración de Color del CTA
-        function setCtaColor(color) {
-            currentCtaBg = color;
-            previewCta.style.backgroundColor = color;
-            
-            if (color.startsWith('rgba') || color === 'transparent') {
-                previewCta.style.border = '1px solid rgba(255,255,255,0.2)';
-                previewCta.style.backdropFilter = 'blur(12px)';
-                previewCta.style.color = '#FDFBF7';
-            } else {
-                previewCta.style.border = 'none';
-                previewCta.style.backdropFilter = 'none';
-                previewCta.style.color = color === '#D4AF37' ? '#0F1714' : '#FDFBF7';
+                textContainer.classList.add('inset-0', 'justify-center', 'items-center', 'text-center');
+                overlayTop.classList.replace('block', 'hidden');
+                overlayBottom.classList.replace('block', 'hidden');
+                overlayCenter.classList.replace('hidden', 'block');
             }
         }
 
-        // Formatos de Banner
-        btnSquare.addEventListener('click', () => {
-            adCanvas.style.width = '500px';
-            adCanvas.style.height = '500px';
-            btnSquare.className = "py-2 px-3 bg-accent text-white border border-accent rounded-xl text-sm font-semibold transition-all";
-            btnStories.className = "py-2 px-3 bg-transparent text-gray-300 border border-white/10 rounded-xl text-sm font-semibold hover:bg-white/5 transition-all";
+        // Event Listeners para Inputs
+        badgeInput.addEventListener('input', e => {
+            renderBadge.textContent = e.target.value;
+            singleAdState[activeBg].badge = e.target.value;
+        });
+        hookInput.addEventListener('input', e => {
+            renderHook.textContent = e.target.value;
+            singleAdState[activeBg].hook = e.target.value;
+        });
+        subInput.addEventListener('input', e => {
+            renderSub.textContent = e.target.value;
+            singleAdState[activeBg].sub = e.target.value;
         });
 
-        btnStories.addEventListener('click', () => {
-            adCanvas.style.width = '350px';
-            adCanvas.style.height = '622px'; // Mantiene proporción 9:16 compactada en preview
-            btnStories.className = "py-2 px-3 bg-accent text-white border border-accent rounded-xl text-sm font-semibold transition-all";
-            btnSquare.className = "py-2 px-3 bg-transparent text-gray-300 border border-white/10 rounded-xl text-sm font-semibold hover:bg-white/5 transition-all";
+        // Event Listener para alineación
+        document.querySelectorAll('input[name="align"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const alignValue = e.target.value;
+                singleAdState[activeBg].align = alignValue;
+                applySingleAlign(alignValue);
+            });
         });
 
-        // Exportar a PNG usando html2canvas
-        btnExport.addEventListener('click', () => {
-            btnExport.innerText = 'PROCESANDO...';
-            btnExport.disabled = true;
+        // Cambio de Imagen de Fondo (Guarda estado del anterior, carga el nuevo)
+        bgSelect.addEventListener('change', (e) => {
+            activeBg = e.target.value;
+            loadActiveState();
+            // Resetea el dropdown de presets para que no confunda
+            textPresetSelect.value = "";
+        });
 
-            // Esperar que las fuentes se carguen bien
-            document.fonts.ready.then(() => {
-                // Obtenemos las dimensiones reales del lienzo
-                const isSquare = adCanvas.style.width === '500px';
+        // Carga de presets de texto sobre la imagen activa
+        textPresetSelect.addEventListener('change', (e) => {
+            const presetVal = e.target.value;
+            if (presetVal && textPresets[presetVal]) {
+                const preset = textPresets[presetVal];
                 
-                // Forzar escala para alta definición al exportar
-                const exportOptions = {
-                    scale: 2, // Exporta a 2x de resolución (ideal para Meta Ads)
-                    useCORS: true,
-                    allowTaint: true,
-                    backgroundColor: '#0F1714'
-                };
+                badgeInput.value = preset.badge;
+                hookInput.value = preset.hook;
+                subInput.value = preset.sub;
+                
+                renderBadge.textContent = preset.badge;
+                renderHook.textContent = preset.hook;
+                renderSub.textContent = preset.sub;
+                
+                // Guardar en el estado actual de esta imagen
+                singleAdState[activeBg].badge = preset.badge;
+                singleAdState[activeBg].hook = preset.hook;
+                singleAdState[activeBg].sub = preset.sub;
+            }
+        });
 
-                html2canvas(adCanvas, exportOptions).then(canvas => {
-                    const link = document.createElement('a');
-                    const formatName = isSquare ? '1080x1080' : '1080x1920';
-                    const angleName = angleSelect.value;
+        // Inicializar
+        loadActiveState();
+
+        // --- 4. LÓGICA DE CARRUSEL ---
+        ['c1', 'c2', 'c3', 'c4'].forEach(id => {
+            // Bg sync
+            document.getElementById('bg_' + id).addEventListener('change', e => {
+                document.querySelector(`#canvas_${id} .carousel-bg`).src = e.target.value;
+            });
+
+            // Text sync
+            document.getElementById(id + '_text').addEventListener('input', e => {
+                document.getElementById('rend_' + id).textContent = e.target.value;
+            });
+
+            // Alignment sync (Top, Bottom, Center)
+            document.querySelectorAll(`input[name="align_${id}"]`).forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    const container = document.getElementById(`container_${id}`);
+                    const oTop = document.getElementById(`overlayTop_${id}`);
+                    const oBottom = document.getElementById(`overlayBottom_${id}`);
+                    const oCenter = document.getElementById(`overlayCenter_${id}`);
+                    const extra = document.getElementById(`extra_${id}`); // Boton CTA o Flecha desliza
                     
-                    link.download = `ad_${angleName}_${formatName}.png`;
-                    link.href = canvas.toDataURL('image/png');
-                    link.click();
+                    // Reset all classes
+                    container.classList.remove('top-0', 'bottom-0', 'inset-0', 'justify-start', 'justify-end', 'justify-center', 'items-center', 'text-center', 'pt-16');
                     
-                    btnExport.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> DESCARGAR BANNER`;
-                    btnExport.disabled = false;
-                }).catch(err => {
-                    console.error('Error exportando canvas:', err);
-                    alert('Ocurrió un error al procesar el banner. Inténtalo de nuevo.');
-                    btnExport.innerHTML = `DESCARGAR BANNER`;
-                    btnExport.disabled = false;
+                    if(e.target.value === 'top') {
+                        container.classList.add('top-0', 'justify-start', 'pt-16');
+                        if (extra) { container.classList.add('items-center', 'text-center'); } // Alinear centro horizontal
+                        oTop.classList.replace('hidden', 'block');
+                        oBottom.classList.replace('block', 'hidden');
+                        oCenter.classList.replace('block', 'hidden');
+                    } else if (e.target.value === 'bottom') {
+                        container.classList.add('bottom-0', 'justify-end');
+                        if (extra) { container.classList.add('items-center', 'text-center'); }
+                        oTop.classList.replace('block', 'hidden');
+                        oBottom.classList.replace('hidden', 'block');
+                        oCenter.classList.replace('block', 'hidden');
+                    } else { // center
+                        container.classList.add('inset-0', 'justify-center', 'items-center', 'text-center');
+                        oTop.classList.replace('block', 'hidden');
+                        oBottom.classList.replace('block', 'hidden');
+                        oCenter.classList.replace('hidden', 'block');
+                    }
                 });
             });
         });
 
-        // Ejecutar inicialización al cargar
-        init();
+        // --- 5. EXPORTACIÓN HTML2CANVAS ---
+        async function exportCanvas(canvasId, filename) {
+            const captureArea = document.getElementById(canvasId);
+            const originalTransform = captureArea.style.transform;
+            captureArea.style.transform = 'scale(1)';
+
+            const canvas = await html2canvas(captureArea, { scale: 1, useCORS: true, backgroundColor: '#0F1714' });
+            
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+
+            captureArea.style.transform = originalTransform;
+            await new Promise(r => setTimeout(r, 500)); 
+        }
+
+        document.getElementById('downloadSingleBtn').addEventListener('click', async (e) => {
+            const btn = e.target;
+            const text = btn.innerHTML;
+            btn.innerHTML = 'Generando...';
+            btn.disabled = true;
+            await exportCanvas('singleCanvas', `ad_andromeda_${Date.now()}.png`);
+            btn.innerHTML = text;
+            btn.disabled = false;
+        });
+
+        document.getElementById('downloadCarouselBtn').addEventListener('click', async (e) => {
+            const btn = e.target;
+            const text = btn.innerHTML;
+            btn.innerHTML = 'Exportando 4 imágenes...';
+            btn.disabled = true;
+            
+            await exportCanvas('canvas_c1', `carousel_1_${Date.now()}.png`);
+            await exportCanvas('canvas_c2', `carousel_2_${Date.now()}.png`);
+            await exportCanvas('canvas_c3', `carousel_3_${Date.now()}.png`);
+            await exportCanvas('canvas_c4', `carousel_4_${Date.now()}.png`);
+            
+            btn.innerHTML = text;
+            btn.disabled = false;
+        });
+
     </script>
 </body>
 </html>

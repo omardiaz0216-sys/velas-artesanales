@@ -30,10 +30,10 @@ Y sientes esa punzada de culpa. "Yo podría hacer eso", piensas. "Tengo el talen
 ---
 
 # BLOQUE 4: EL INVALIDADOR
-# La trampa de los métodos convencionales
-Allá afuera, el mercado está inundado de cursitos baratos de "haz tu propia vela en casa". Te enseñan a hacer manualidades para regalar a tus tías en Navidad. Te hacen creer que el negocio es vender velas baratas en ferias locales, compitiendo por centavos.
+# La trampa de los métodos convencionales: El "Bucle Roto"
+Allá afuera, el mercado está inundado de cursitos baratos de "haz tu propia vela en casa". Te enseñan a hacer la manualidad, pero te dejan completamente sola a la hora de venderla. Te hacen creer que el negocio es vender velas baratas en ferias locales, compitiendo por centavos. Eso es un ecosistema incompleto, un "Bucle Roto".
 
-Esa es la receta perfecta para aplastar tu sueño, agotar tus ahorros en materiales mediocres y terminar odiando algo que debía darte placer. Cuando compites por precio, siempre habrá alguien dispuesto a vender más barato. Esa batalla es una pérdida de tiempo y dinero garantizada.
+Esa es la receta perfecta para aplastar tu sueño, agotar tus ahorros en materiales mediocres y terminar odiando algo que debía darte placer. Cuando dependes de intermediarios o compites por precio en un sistema roto, siempre habrá alguien dispuesto a vender más barato. Esa batalla es una pérdida de tiempo y dinero garantizada.
 
 *[PLACEHOLDER: IMAGEN DOLOR EMOCIONAL - FRUSTRACIÓN: Mujer estresada frente a una mesa llena de recipientes sucios, moldes rotos y velas mal terminadas, haciendo cuentas en una libreta]*
 
@@ -41,15 +41,18 @@ Esa es la receta perfecta para aplastar tu sueño, agotar tus ahorros en materia
 
 # BLOQUE 5: REVELACIÓN DEL MECANISMO ÚNICO (NEURO-CONTRASTE DE ALIVIO)
 ## Por Fin, Tu Salida De La Rutina
-# El Alivio Que Buscabas: Recupera El Control De Tu Tiempo Y Crea Tu Propia Eco-Boutique 360
+# El Alivio Que Buscabas: Recupera El Control Con El Sistema de Bucle Cerrado
 
 *Respira profundo: No naciste para ser espectadora de cómo otras mujeres construyen su libertad mientras tú agotas tu vida en la rutina.*
 
-No necesitas arriesgar tus ahorros ni perder meses en frustrante prueba y error. Solo necesitas un camino seguro y comprobado para tomar el control total de tus ingresos y ser tú quien abra las puertas de su propia marca de lujo desde la comodidad de tu cocina.
+No necesitas arriesgar tus ahorros ni perder meses en frustrante prueba y error en un "bucle roto". Solo necesitas un ecosistema seguro, predecible y comprobado para tomar el control total de tus ingresos desde la comodidad de tu cocina, sin intermediarios.
 
-La respuesta confidencial que utilizan las marcas de lujo para vender a precios altos no está en la cera... está en activar el Código de Experiencia Sensorial. Te presentamos el **Sistema Eco-Boutique 360**: el único método sigiloso de bucle cerrado que te da el poder de fabricar productos de alta gama y posicionarlos como objetos de deseo en redes sociales.
+Te presentamos el **Sistema Eco-Boutique 360**. El único método sigiloso de "Bucle Cerrado" que te enseña a dominar más de 10 formulaciones exactas y la estrategia de neuromarketing exacta para posicionarlas como objetos de deseo.
 
-Te presentamos el **Sistema Eco-Boutique 360**. El único método sigiloso de bucle cerrado que te enseña a dominar más de 10 formulaciones exactas (*Cera microperlada, polvo, arroz, colza, abeja, soja, palma, coco, parafina china y gel*) para fabricar productos con calidad de exportación, y la estrategia de neuromarketing exacta para posicionarlos como un producto de lujo en redes sociales. 
+**¿Cómo funciona el Bucle Cerrado?**
+1. **Formulación Botánica:** Creas productos premium (como la Vela Iceberg) a muy bajo costo en tu hogar.
+2. **Packaging Hipnótico:** Aplicas nuestro ADN Visual para que tu producto luzca como una marca europea.
+3. **Venta Directa Social:** Usas Instagram para vender directo al cliente final. Tú controlas todo el proceso y retienes el 100% de la rentabilidad. No hay fugas de dinero ni comisiones a terceros. 
 
 *[PLACEHOLDER: IMAGEN SOLUCIÓN EMOCIONAL - ALIVIO: Una colección de 3 velas de lujo y 2 jabones botánicos con empaques minimalistas, iluminados por luz natural]*
 
@@ -94,6 +97,9 @@ Un cofre digital masivo que contiene 18 herramientas invaluables: Nuestro Direct
 ---
 
 # BLOQUE 9: ANCLAJE FINAL Y PRECIO
+**El Costo Real:**
+Crear un negocio de Bucle Cerrado en el mundo físico requiere alquilar un local, pagar intermediarios y arriesgar miles de dólares en inventario. Hoy te llevas el plano maestro para construirlo digitalmente desde casa.
+
 **Valor Total del Sistema:** ~~**$358 USD**~~
 *[PLACEHOLDER: COUNTDOWN DE URGENCIA REINICIABLE A MEDIANOCHE LOCAL]*
 **Tu inversión hoy:** **$37.50 USD** (Un solo pago, acceso de por vida).
