@@ -569,15 +569,30 @@
             const originalTransform = captureArea.style.transform;
             captureArea.style.transform = 'scale(1)';
 
-            const canvas = await html2canvas(captureArea, { scale: 1, useCORS: true, backgroundColor: '#0F1714' });
-            
-            const link = document.createElement('a');
-            link.download = filename;
-            link.href = canvas.toDataURL('image/png');
-            link.click();
+            try {
+                // Si se abre vía file://, avisamos al usuario antes de fallar
+                if (window.location.protocol === 'file:') {
+                    throw new Error("LocalFileProtocol");
+                }
 
-            captureArea.style.transform = originalTransform;
-            await new Promise(r => setTimeout(r, 500)); 
+                const canvas = await html2canvas(captureArea, { scale: 1, useCORS: true, backgroundColor: '#0F1714' });
+                
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            } catch (err) {
+                console.error("Error al exportar:", err);
+                if (err.message === "LocalFileProtocol" || err.name === "SecurityError") {
+                    alert("⚠️ ERROR DE SEGURIDAD DEL NAVEGADOR:\n\nEstás abriendo el archivo haciendo doble clic directo (protocolo file:///). Los navegadores bloquean la exportación de imágenes del disco duro por seguridad (CORS).\n\nCÓMO SOLUCIONARLO:\n1. Abre una consola/terminal en la carpeta del proyecto.\n2. Ejecuta: npm start (o npx http-server)\n3. Abre la URL en tu navegador: http://localhost:8080/ads_generator.html\n\n¡De esta forma funcionará al instante!");
+                } else {
+                    alert("Error al exportar la imagen: " + err.message);
+                }
+                throw err;
+            } finally {
+                captureArea.style.transform = originalTransform;
+                await new Promise(r => setTimeout(r, 500)); 
+            }
         }
 
         document.getElementById('downloadSingleBtn').addEventListener('click', async (e) => {
@@ -585,24 +600,32 @@
             const text = btn.innerHTML;
             btn.innerHTML = 'Generando...';
             btn.disabled = true;
-            await exportCanvas('singleCanvas', `ad_andromeda_${Date.now()}.png`);
-            btn.innerHTML = text;
-            btn.disabled = false;
+            try {
+                await exportCanvas('singleCanvas', `ad_andromeda_${Date.now()}.png`);
+            } catch (err) {
+                // Error capturado y manejado
+            } finally {
+                btn.innerHTML = text;
+                btn.disabled = false;
+            }
         });
 
         document.getElementById('downloadCarouselBtn').addEventListener('click', async (e) => {
             const btn = e.target;
             const text = btn.innerHTML;
-            btn.innerHTML = 'Exportando 4 imágenes...';
+            btn.innerHTML = 'Exportando imágenes...';
             btn.disabled = true;
-            
-            await exportCanvas('canvas_c1', `carousel_1_${Date.now()}.png`);
-            await exportCanvas('canvas_c2', `carousel_2_${Date.now()}.png`);
-            await exportCanvas('canvas_c3', `carousel_3_${Date.now()}.png`);
-            await exportCanvas('canvas_c4', `carousel_4_${Date.now()}.png`);
-            
-            btn.innerHTML = text;
-            btn.disabled = false;
+            try {
+                await exportCanvas('canvas_c1', `carousel_1_${Date.now()}.png`);
+                await exportCanvas('canvas_c2', `carousel_2_${Date.now()}.png`);
+                await exportCanvas('canvas_c3', `carousel_3_${Date.now()}.png`);
+                await exportCanvas('canvas_c4', `carousel_4_${Date.now()}.png`);
+            } catch (err) {
+                // Error capturado y manejado
+            } finally {
+                btn.innerHTML = text;
+                btn.disabled = false;
+            }
         });
 
     </script>
