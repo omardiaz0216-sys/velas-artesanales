@@ -14,9 +14,9 @@
 
 ---
 
-## Fase 3 — Portfolio de Diversidad Creativa (Los 3 Ángulos)
+## Fase 3 — Portfolio de Diversidad Creativa (Los 4 Ángulos)
 
-### Anuncio 1: Ángulo del Dolor (Evitación) - *Formato: Imagen IA (ad_bg_dolor.webp)*
+### Anuncio 1: Ángulo del Dolor (Evitación) [Fase: TOFU / MOFU] - *Formato: Imagen IA (ad_bg_dolor.webp)*
 **Primary Text (Texto Principal):**
 Cómo pasé del estrés y agotamiento por mi trabajo a facturar desde mi cocina con velas premium. 
 
@@ -36,7 +36,7 @@ Si estás frustrada vendiendo barato, necesitas ver este método de 14 días.
 
 ---
 
-### Anuncio 2: Ángulo del Beneficio (Transformación) - *Formato: Video UGC*
+### Anuncio 2: Ángulo del Beneficio (Transformación) [Fase: MOFU] - *Formato: Video UGC*
 **Primary Text (Texto Principal):**
 Llevo solo 3 semanas haciendo velas artesanales y ya tuve mis primeros pedidos de clientes desconocidos en Instagram. 🕯️✨
 
@@ -54,7 +54,7 @@ Garantía Incondicional de 7 Días.
 
 ---
 
-### Anuncio 3: Ángulo de Curiosidad (El Secreto) - *Formato: Imagen IA / Carrusel (ad_bg_curiosidad.webp)*
+### Anuncio 3: Ángulo de Curiosidad (El Secreto) [Fase: TOFU / MOFU] - *Formato: Imagen IA / Carrusel (ad_bg_curiosidad.webp)*
 **Primary Text (Texto Principal):**
 Todos me dijeron que era una pésima idea vender velas y jabones en 2026...
 
@@ -73,6 +73,46 @@ El paso a paso exacto está dentro del Sistema Eco-Boutique 360.
 🚨 3 Bonos Premium Gratis Solo por Hoy.
 
 ---
+
+### Anuncio 4: Ángulo de Conversión / Prueba Social [Fase: BOFU] - *Formato: Carrusel de 6 Láminas (Capturas Whatsapp + Tarjeta Oferta)*
+**Primary Text (Texto Principal):**
+¿Es realmente posible crear un negocio de velas y jabones premium desde casa y recuperar tu inversión en menos de una semana?
+
+No tienes que creernos a nosotros. Desliza y lee lo que dicen nuestras alumnas reales cuando salen del "Bucle Roto" de hacer manualidades baratas y aplican el **Sistema de Bucle Cerrado Eco-Boutique 360**:
+
+💬 *"Recuperé mi inversión de $37.50 en la primera semana vendiendo solo 3 velas a mis compañeras..."*
+💬 *"El sistema de temperatura resolvió todo el primer día. Ya tengo mis primeros pedidos en Instagram..."*
+
+Si estás cansada de tu rutina laboral y quieres emprender algo nuevo, necesitas ver este método. Aprende a crear verdaderos objetos de deseo botánicos que se venden a precio de lujo.
+
+**Hoy te llevas la infraestructura completa:**
+🟢 El Sistema Eco-Boutique 360 (Valor: ~~$97 USD~~)
+🎁 Bono 1: Masterclass Velas Navideñas (Valor: ~~$47 USD~~)
+🎁 Bono 2: Curso Jabones Botánicos (Valor: ~~$67 USD~~)
+🎁 Bono 3: La Bóveda con 18 Herramientas VIP (Valor: ~~$147 USD~~)
+
+**Todo por un solo pago de $37.50 USD.** Sin mensualidades. Acceso para siempre.
+
+🔒 **Garantía Cero Riesgo:** Entra hoy, pruébalo por 7 días, y si decides que no es para ti, te devolvemos el 100% de tu dinero. Sin preguntas.
+
+🔴 **Desliza para ver los chats de WhatsApp** y toca el botón de abajo para unirte antes de que quitemos los 3 Bonos VIP de regalo.
+
+**Estructura del Carrusel (Slide por Slide):**
+*   **Lámina 1 (Chat 1 - assets/testimonio_1.webp):** *"Recuperó su inversión en la primera semana..."*
+*   **Lámina 2 (Chat 2 - assets/testimonio_2.webp):** *"Primeros pedidos en Instagram en 3 semanas..."*
+*   **Lámina 3 (Chat 3 - assets/testimonio_3.webp):** *"El mejor autoregalo para su paz y bolsillo..."*
+*   **Lámina 4 (Chat 4 - assets/testimonio_4.webp):** *"Copió el texto y vendió en 48 horas..."*
+*   **Lámina 5 (Chat 5 - assets/testimonio_5.webp):** *"Dejó de competir con precios baratos..."*
+*   **Lámina 6 (Oferta - assets/ad_oferta_bofu.webp):** *"¡Únete hoy por solo $37.50 USD de por vida!"*
+
+**Description (Descripción):**
+Garantía Cero Riesgo de 7 días.
+
+**CTA (Llamado a la Acción):**
+Obtener oferta
+
+---
+
 
 ## Fase 4 — Guiones de Video (Formato Vertical 9:16)
 
