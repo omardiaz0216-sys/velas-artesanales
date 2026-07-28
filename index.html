@@ -754,7 +754,15 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
                             url.searchParams.set(key, val);
                         }
                         link.href = url.toString();
-                        console.log('Enlace de Hotmart optimizado con parámetros:', link.href);
+                        
+                        // Añadir evento de Pago Iniciado (InitiateCheckout) para Meta Ads
+                        link.addEventListener('click', function() {
+                            if(typeof fbq === 'function') {
+                                fbq('track', 'InitiateCheckout');
+                            }
+                        });
+                        
+                        console.log('Enlace de Hotmart optimizado con parámetros y tracking de Pago Iniciado:', link.href);
                     } catch (e) {
                         console.error('Error al inyectar parámetros de tracking en enlace:', e);
                     }
