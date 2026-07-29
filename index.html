@@ -7,7 +7,6 @@
     <meta name="description" content="El Sistema Rentable de Velas y Jabones Botánicos. Convierte tu Cocina en un Estudio Aromático Premium en 30 días sin experiencia previa.">
     <!-- Preloads para acelerar el renderizado (Mejora tasa de carga de Meta Ads) -->
     <link rel="preload" as="image" href="assets/hero_eco.webp">
-    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/outfit-800-9.woff2" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <!-- Meta Pixel Code -->
     <script>
@@ -730,56 +729,69 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
             setInterval(updateCountdown, 1000);
         }
 
-        // Motor de Arrastre de Parámetros UTM & fbclid para Hotmart (Atribución Asegurada)
+        // ============================================================
+        // MOTOR DE RASTREO HOTMART v2.0 — Beacon + Fallback Seguro
+        // Corrige: Race Condition, bloqueo sin UTMs, listeners duplicados
+        // ============================================================
         (function() {
-            const trackingParams = ['fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
-            
-            // 1. Guardar parámetros de la URL en sessionStorage (persistencia entre recargas)
+            const trackingParams = ['fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'src', 'sck'];
+
+            // PASO 1: Guardar parámetros de la URL actual en sessionStorage
             const urlParams = new URLSearchParams(window.location.search);
-            trackingParams.forEach(param => {
+            trackingParams.forEach(function(param) {
                 if (urlParams.has(param)) {
-                    sessionStorage.setItem(param, urlParams.get(param));
+                    sessionStorage.setItem('hm_' + param, urlParams.get(param));
                 }
             });
 
-            // 2. Función para inyectar parámetros guardados en los enlaces de Hotmart
-            function updateHotmartLinks() {
-                const storedParams = {};
-                trackingParams.forEach(param => {
-                    const val = sessionStorage.getItem(param);
-                    if (val) storedParams[param] = val;
-                });
-
-                if (Object.keys(storedParams).length === 0) return;
-
+            // PASO 2: Configurar todos los enlaces de Hotmart
+            function initHotmartLinks() {
                 const links = document.querySelectorAll('a[href*="hotmart.com"]');
-                links.forEach(link => {
+
+                links.forEach(function(link) {
                     try {
+                        // 2a. Inyectar parámetros UTM en la URL de Hotmart (si existen)
                         const url = new URL(link.href);
-                        for (const [key, val] of Object.entries(storedParams)) {
-                            url.searchParams.set(key, val);
-                        }
-                        link.href = url.toString();
-                        
-                        // Añadir evento de Pago Iniciado (InitiateCheckout) para Meta Ads
-                        link.addEventListener('click', function() {
-                            if(typeof fbq === 'function') {
-                                fbq('track', 'InitiateCheckout');
+                        var hasParams = false;
+                        trackingParams.forEach(function(param) {
+                            const val = sessionStorage.getItem('hm_' + param);
+                            if (val) {
+                                url.searchParams.set(param, val);
+                                hasParams = true;
                             }
                         });
-                        
-                        console.log('Enlace de Hotmart optimizado con parámetros y tracking de Pago Iniciado:', link.href);
+                        if (hasParams) link.href = url.toString();
+
+                        // 2b. Listener de InitiateCheckout con Beacon + setTimeout fallback
+                        // once:true evita listeners duplicados si la función se ejecuta varias veces
+                        link.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            var destination = link.href;
+
+                            // Disparar fbq con transport:'beacon' para garantizar entrega
+                            // aunque el navegador cierre la página inmediatamente
+                            if (typeof fbq === 'function') {
+                                fbq('track', 'InitiateCheckout', {}, { transport: 'beacon' });
+                            }
+
+                            // Fallback seguro: redirigir tras 300ms para dar tiempo al beacon
+                            setTimeout(function() {
+                                window.location.href = destination;
+                            }, 300);
+
+                        }, { once: true }); // once:true = nunca se dispara dos veces
+
                     } catch (e) {
-                        console.error('Error al inyectar parámetros de tracking en enlace:', e);
+                        console.error('[Hotmart Tracker] Error al procesar enlace:', e);
                     }
                 });
             }
 
-            // Ejecutar cuando el DOM esté listo
+            // PASO 3: Ejecutar cuando el DOM esté completamente listo
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', updateHotmartLinks);
+                document.addEventListener('DOMContentLoaded', initHotmartLinks);
             } else {
-                updateHotmartLinks();
+                initHotmartLinks();
             }
         })();
     </script>
