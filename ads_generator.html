@@ -75,9 +75,21 @@
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-1">Imagen de Fondo</label>
                             <select id="bgSelect" class="w-full border-gray-300 rounded-lg p-3 bg-white border-2 focus:border-accent focus:ring-accent outline-none font-medium">
-                                <option value="assets/ad_bg_dolor.webp" selected>Imagen 1: Dolor (Frustración / Evitación)</option>
-                                <option value="assets/ad_bg_beneficio.webp">Imagen 2: Beneficio (Resultados / Lujo)</option>
-                                <option value="assets/ad_bg_curiosidad.webp">Imagen 3: Curiosidad (El Secreto Oculto)</option>
+                                <optgroup label="Ángulo del Dolor (Evitación)">
+                                    <option value="assets/ad_bg_dolor.webp" selected>Dolor 1 — Caos / Desorden de Cera</option>
+                                    <option value="assets/ad_bg_dolor_2.webp">Dolor 2 — Frustración Financiera / Monedas</option>
+                                    <option value="assets/ad_bg_dolor_3.webp">Dolor 3 — Velas Industriales Genéricas</option>
+                                </optgroup>
+                                <optgroup label="Ángulo de Beneficio (Transformación)">
+                                    <option value="assets/ad_bg_beneficio.webp">Beneficio 1 — Slate / Travertino de Lujo</option>
+                                    <option value="assets/ad_bg_beneficio_2.webp">Beneficio 2 — Taller Limpio / Creadora con Delantal</option>
+                                    <option value="assets/ad_bg_beneficio_3.webp">Beneficio 3 — Empaque de Regalo Premium</option>
+                                </optgroup>
+                                <optgroup label="Ángulo de Curiosidad (El Secreto)">
+                                    <option value="assets/ad_bg_curiosidad.webp">Curiosidad 1 — Detalle de Vela / Incrustaciones</option>
+                                    <option value="assets/ad_bg_curiosidad_2.webp">Curiosidad 2 — Spa / Llama y Mecha de Madera</option>
+                                    <option value="assets/ad_bg_curiosidad_3.webp">Curiosidad 3 — Jabón Cortado en Slate / Textura</option>
+                                </optgroup>
                             </select>
                         </div>
 
@@ -109,11 +121,20 @@
                         </div>
 
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Alineación del Texto</label>
-                            <div class="flex gap-4 text-sm font-bold text-gray-600">
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Alineación del Titular (Badge + Gancho)</label>
+                            <div class="flex gap-4 text-sm font-bold text-gray-600 mb-4">
                                 <label class="flex items-center gap-1"><input type="radio" name="align" value="center" class="accent-accent"> Centro</label>
                                 <label class="flex items-center gap-1"><input type="radio" name="align" value="bottom" checked class="accent-accent"> Abajo</label>
                                 <label class="flex items-center gap-1"><input type="radio" name="align" value="top" class="accent-accent"> Arriba</label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Alineación del Subtítulo</label>
+                            <div class="flex gap-4 text-sm font-bold text-gray-600">
+                                <label class="flex items-center gap-1"><input type="radio" name="subAlign" value="center" class="accent-accent"> Centro</label>
+                                <label class="flex items-center gap-1"><input type="radio" name="subAlign" value="bottom" checked class="accent-accent"> Abajo</label>
+                                <label class="flex items-center gap-1"><input type="radio" name="subAlign" value="top" class="accent-accent"> Arriba</label>
                             </div>
                         </div>
 
@@ -135,21 +156,21 @@
                                 <div id="overlayBottom" class="gradient-overlay-bottom block"></div>
                                 <div id="overlayCenter" class="absolute inset-0 bg-dark/60 hidden"></div>
                                 
-                                <!-- Contenedor de Texto -->
-                                <div id="textContainer" class="absolute w-full p-16 flex flex-col justify-end bottom-0 left-0">
-                                    
+                                <!-- Contenedor del Titular (Badge + Hook) -->
+                                <div id="titleContainer" class="absolute w-full p-16 flex flex-col left-0 z-10">
                                     <div id="renderBadge" class="inline-block bg-gold text-dark px-6 py-2 rounded-full font-bold text-xl mb-6 w-max uppercase tracking-widest shadow-lg">
-                                        MÉTODO COMPROBADO
+                                        DEJA EL BUCLE ROTO
                                     </div>
-
-                                    <h2 id="renderHook" class="text-white font-extrabold text-[3.5rem] leading-[1.1] mb-6 uppercase drop-shadow-xl" style="text-wrap: balance;">
-                                        CÓMO PASÉ DEL ESTRÉS Y LA RUTINA A FACTURAR DESDE CASA
+                                    <h2 id="renderHook" class="text-white font-extrabold text-[3.5rem] leading-[1.1] uppercase drop-shadow-xl" style="text-wrap: balance;">
+                                        DEJA DE VENDER MANUALIDADES BARATAS. INICIA TU ECO-BOUTIQUE.
                                     </h2>
-                                    
+                                </div>
+                                
+                                <!-- Contenedor del Subtítulo (Independiente) -->
+                                <div id="subContainer" class="absolute w-full p-16 flex flex-col left-0 z-10">
                                     <p id="renderSub" class="text-gray-300 text-3xl font-medium drop-shadow-md border-l-4 border-accent pl-6">
-                                        Descubre el negocio anticrisis oculto.
+                                        Aprende el método exacto para facturar desde tu cocina hoy.
                                     </p>
-                                    
                                 </div>
                             </div>
                         </div>
@@ -360,51 +381,74 @@
         window.addEventListener('resize', updateScales);
         setTimeout(updateScales, 100); 
 
-        // --- 3. LÓGICA DE ANUNCIO ÚNICO (DECOUPLED & MEMORY READY) ---
+        // --- 3. LÓGICA DE ANUNCIO ÚNICO (DECOUPLED, MEMORY & LOCALSTORAGE READY) ---
         const textPresets = {
             dolor: {
                 badge: 'DEJA EL BUCLE ROTO',
                 hook: 'DEJA DE VENDER MANUALIDADES BARATAS. INICIA TU ECO-BOUTIQUE.',
-                sub: 'Aprende el método exacto para facturar desde tu cocina hoy.'
+                sub: 'Aprende el método exacto para facturar desde tu cocina hoy.',
+                align: 'bottom',
+                subAlign: 'bottom'
             },
             beneficio: {
                 badge: 'ESTUDIO AROMÁTICO PREMIUM',
                 hook: 'TU PROPIO TALLER DE VELAS Y JABONES EN 14 DÍAS',
-                sub: 'Comienza con solo $40 de inversión y retén el 100% de la ganancia.'
+                sub: 'Comienza con solo $40 de inversión y retén el 100% de la ganancia.',
+                align: 'bottom',
+                subAlign: 'bottom'
             },
             curiosidad: {
                 badge: 'EL SECRETO PREMIUM',
                 hook: 'EL ERROR DE $3 DÓLARES QUE COMETEN LAS QUE HACEN VELAS',
-                sub: 'Cómo posicionar tu marca en Instagram y vender a precios de lujo.'
+                sub: 'Cómo posicionar tu marca en Instagram y vender a precios de lujo.',
+                align: 'bottom',
+                subAlign: 'bottom'
             },
             oferta_bofu: {
                 badge: 'OFERTA POR TIEMPO LIMITADO',
                 hook: 'SISTEMA ECO-BOUTIQUE 360 + 3 BONOS GRATIS',
-                sub: 'Todo por solo $37.50 USD (Un solo pago para siempre).'
+                sub: 'Todo por solo $37.50 USD (Un solo pago para siempre).',
+                align: 'bottom',
+                subAlign: 'bottom'
             }
         };
 
-        // Estado persistente para cada una de las 3 imágenes de fondo
-        const singleAdState = {
-            'assets/ad_bg_dolor.webp': {
-                badge: 'DEJA EL BUCLE ROTO',
-                hook: 'DEJA DE VENDER MANUALIDADES BARATAS. INICIA TU ECO-BOUTIQUE.',
-                sub: 'Aprende el método exacto para facturar desde tu cocina hoy.',
-                align: 'bottom'
-            },
-            'assets/ad_bg_beneficio.webp': {
-                badge: 'ESTUDIO AROMÁTICO PREMIUM',
-                hook: 'TU PROPIO TALLER DE VELAS Y JABONES EN 14 DÍAS',
-                sub: 'Comienza con solo $40 de inversión y retén el 100% de la ganancia.',
-                align: 'bottom'
-            },
-            'assets/ad_bg_curiosidad.webp': {
-                badge: 'EL SECRETO PREMIUM',
-                hook: 'EL ERROR DE $3 DÓLARES QUE COMETEN LAS QUE HACEN VELAS',
-                sub: 'Cómo posicionar tu marca en Instagram y vender a precios de lujo.',
-                align: 'bottom'
-            }
+        // Estado inicial para las 9 opciones de fondos posibles
+        const defaultAdState = {
+            'assets/ad_bg_dolor.webp': { ...textPresets.dolor },
+            'assets/ad_bg_dolor_2.webp': { ...textPresets.dolor },
+            'assets/ad_bg_dolor_3.webp': { ...textPresets.dolor },
+            'assets/ad_bg_beneficio.webp': { ...textPresets.beneficio },
+            'assets/ad_bg_beneficio_2.webp': { ...textPresets.beneficio },
+            'assets/ad_bg_beneficio_3.webp': { ...textPresets.beneficio },
+            'assets/ad_bg_curiosidad.webp': { ...textPresets.curiosidad },
+            'assets/ad_bg_curiosidad_2.webp': { ...textPresets.curiosidad },
+            'assets/ad_bg_curiosidad_3.webp': { ...textPresets.curiosidad }
         };
+
+        // Cargar desde LocalStorage o inicializar
+        let singleAdState = {};
+        try {
+            const savedState = localStorage.getItem('singleAdState_v3_9bg');
+            if (savedState) {
+                singleAdState = JSON.parse(savedState);
+                // Rellenar claves faltantes en caso de actualización
+                Object.keys(defaultAdState).forEach(k => {
+                    if (!singleAdState[k]) {
+                        singleAdState[k] = { ...defaultAdState[k] };
+                    }
+                });
+            } else {
+                singleAdState = { ...defaultAdState };
+            }
+        } catch(e) {
+            singleAdState = { ...defaultAdState };
+        }
+
+        // Persistencia automática
+        function persistState() {
+            localStorage.setItem('singleAdState_v3_9bg', JSON.stringify(singleAdState));
+        }
 
         const bgSelect = document.getElementById('bgSelect');
         const textPresetSelect = document.getElementById('textPresetSelect');
@@ -417,83 +461,131 @@
         const renderBadge = document.getElementById('renderBadge');
         const renderHook = document.getElementById('renderHook');
         const renderSub = document.getElementById('renderSub');
-
-        const textContainer = document.getElementById('textContainer');
+ 
+        const titleContainer = document.getElementById('titleContainer');
+        const subContainer = document.getElementById('subContainer');
         const overlayTop = document.getElementById('overlayTop');
         const overlayBottom = document.getElementById('overlayBottom');
         const overlayCenter = document.getElementById('overlayCenter');
 
-        // Cargar estado inicial (Dolor)
         let activeBg = 'assets/ad_bg_dolor.webp';
         
         function loadActiveState() {
-            const state = singleAdState[activeBg];
+            const state = singleAdState[activeBg] || defaultAdState[activeBg];
             singleBg.src = activeBg;
             
-            badgeInput.value = state.badge;
-            hookInput.value = state.hook;
-            subInput.value = state.sub;
+            badgeInput.value = state.badge || '';
+            hookInput.value = state.hook || '';
+            subInput.value = state.sub || '';
             
-            renderBadge.textContent = state.badge;
-            renderHook.textContent = state.hook;
-            renderSub.textContent = state.sub;
+            renderBadge.textContent = state.badge || '';
+            renderHook.textContent = state.hook || '';
+            renderSub.textContent = state.sub || '';
             
-            document.querySelector(`input[name="align"][value="${state.align}"]`).checked = true;
-            applySingleAlign(state.align);
+            document.querySelector(`input[name="align"][value="${state.align || 'bottom'}"]`).checked = true;
+            document.querySelector(`input[name="subAlign"][value="${state.subAlign || 'bottom'}"]`).checked = true;
+            
+            applySingleAlignments(state.align || 'bottom', state.subAlign || 'bottom');
         }
 
-        function applySingleAlign(alignValue) {
-            textContainer.classList.remove('top-0', 'bottom-0', 'inset-0', 'justify-start', 'justify-end', 'justify-center', 'items-center', 'text-center', 'pt-16');
-            if(alignValue === 'top') {
-                textContainer.classList.add('top-0', 'justify-start', 'pt-16');
-                overlayTop.classList.replace('hidden', 'block');
-                overlayBottom.classList.replace('block', 'hidden');
-                overlayCenter.classList.replace('block', 'hidden');
-            } else if (alignValue === 'bottom') {
-                textContainer.classList.add('bottom-0', 'justify-end');
-                overlayTop.classList.replace('block', 'hidden');
-                overlayBottom.classList.replace('hidden', 'block');
-                overlayCenter.classList.replace('block', 'hidden');
+        function applySingleAlignments(titleAlign, subAlign) {
+            // Limpiar alineaciones anteriores del Titular
+            titleContainer.classList.remove('top-0', 'bottom-0', 'inset-0', 'justify-start', 'justify-end', 'justify-center', 'items-center', 'text-center', 'pt-16');
+            if (titleAlign === 'top') {
+                titleContainer.classList.add('top-0', 'justify-start', 'pt-16');
+            } else if (titleAlign === 'bottom') {
+                titleContainer.classList.add('bottom-0', 'justify-end');
             } else {
-                textContainer.classList.add('inset-0', 'justify-center', 'items-center', 'text-center');
+                titleContainer.classList.add('inset-0', 'justify-center', 'items-center', 'text-center');
+            }
+
+            // Limpiar alineaciones anteriores del Subtítulo
+            subContainer.classList.remove('top-0', 'bottom-0', 'inset-0', 'justify-start', 'justify-end', 'justify-center', 'items-center', 'text-center', 'pt-16', 'pt-48', 'pb-48');
+            if (subAlign === 'top') {
+                subContainer.classList.add('top-0', 'justify-start', 'pt-16');
+                if (titleAlign === 'top') {
+                    // Evitar que se solapen si ambos están arriba
+                    subContainer.classList.add('pt-48');
+                }
+            } else if (subAlign === 'bottom') {
+                subContainer.classList.add('bottom-0', 'justify-end');
+                if (titleAlign === 'bottom') {
+                    // Evitar solapamientos si ambos están abajo
+                    subContainer.classList.add('pb-48');
+                }
+            } else {
+                subContainer.classList.add('inset-0', 'justify-center', 'items-center', 'text-center');
+            }
+
+            // Activar overlays de gradientes según sea necesario
+            const hasTop = (titleAlign === 'top' || subAlign === 'top');
+            const hasBottom = (titleAlign === 'bottom' || subAlign === 'bottom');
+            const hasCenter = (titleAlign === 'center' || subAlign === 'center');
+
+            if (hasTop) {
+                overlayTop.classList.replace('hidden', 'block');
+            } else {
                 overlayTop.classList.replace('block', 'hidden');
+            }
+
+            if (hasBottom) {
+                overlayBottom.classList.replace('hidden', 'block');
+            } else {
                 overlayBottom.classList.replace('block', 'hidden');
+            }
+
+            if (hasCenter) {
                 overlayCenter.classList.replace('hidden', 'block');
+            } else {
+                overlayCenter.classList.replace('block', 'hidden');
             }
         }
 
-        // Event Listeners para Inputs
+        // Event Listeners para Inputs con persistencia automática
         badgeInput.addEventListener('input', e => {
             renderBadge.textContent = e.target.value;
             singleAdState[activeBg].badge = e.target.value;
+            persistState();
         });
         hookInput.addEventListener('input', e => {
             renderHook.textContent = e.target.value;
             singleAdState[activeBg].hook = e.target.value;
+            persistState();
         });
         subInput.addEventListener('input', e => {
             renderSub.textContent = e.target.value;
             singleAdState[activeBg].sub = e.target.value;
+            persistState();
         });
 
-        // Event Listener para alineación
+        // Event Listeners para alineación de Titular
         document.querySelectorAll('input[name="align"]').forEach(radio => {
             radio.addEventListener('change', (e) => {
                 const alignValue = e.target.value;
                 singleAdState[activeBg].align = alignValue;
-                applySingleAlign(alignValue);
+                persistState();
+                applySingleAlignments(alignValue, singleAdState[activeBg].subAlign || 'bottom');
             });
         });
 
-        // Cambio de Imagen de Fondo (Guarda estado del anterior, carga el nuevo)
+        // Event Listeners para alineación de Subtítulo
+        document.querySelectorAll('input[name="subAlign"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const subAlignValue = e.target.value;
+                singleAdState[activeBg].subAlign = subAlignValue;
+                persistState();
+                applySingleAlignments(singleAdState[activeBg].align || 'bottom', subAlignValue);
+            });
+        });
+
+        // Cambio de Imagen de Fondo
         bgSelect.addEventListener('change', (e) => {
             activeBg = e.target.value;
             loadActiveState();
-            // Resetea el dropdown de presets para que no confunda
             textPresetSelect.value = "";
         });
 
-        // Carga de presets de texto sobre la imagen activa
+        // Carga de presets sobreescribiendo el estado actual
         textPresetSelect.addEventListener('change', (e) => {
             const presetVal = e.target.value;
             if (presetVal && textPresets[presetVal]) {
@@ -507,10 +599,17 @@
                 renderHook.textContent = preset.hook;
                 renderSub.textContent = preset.sub;
                 
-                // Guardar en el estado actual de esta imagen
                 singleAdState[activeBg].badge = preset.badge;
                 singleAdState[activeBg].hook = preset.hook;
                 singleAdState[activeBg].sub = preset.sub;
+                singleAdState[activeBg].align = preset.align;
+                singleAdState[activeBg].subAlign = preset.subAlign;
+                
+                document.querySelector(`input[name="align"][value="${preset.align}"]`).checked = true;
+                document.querySelector(`input[name="subAlign"][value="${preset.subAlign}"]`).checked = true;
+                
+                applySingleAlignments(preset.align, preset.subAlign);
+                persistState();
             }
         });
 
