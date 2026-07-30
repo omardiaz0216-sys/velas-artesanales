@@ -97,20 +97,12 @@
                             <label class="block text-sm font-bold text-gray-700 mb-1">Cargar Frases Preestablecidas</label>
                             <select id="textPresetSelect" class="w-full border-gray-300 rounded-lg p-3 bg-white border-2 focus:border-accent focus:ring-accent outline-none font-medium">
                                 <option value="" disabled selected>-- Selecciona un preset para cargar --</option>
-                                <optgroup label="Ángulo del Dolor">
-                                    <option value="dolor_a">Dolor A — Primer Plano (Monedas)</option>
-                                    <option value="dolor_b">Dolor B — Antes y Después (Marca)</option>
-                                    <option value="dolor_c">Dolor C — Con vs Sin (Evita pérdidas)</option>
-                                </optgroup>
-                                <optgroup label="Ángulo de Beneficio">
-                                    <option value="beneficio_a">Beneficio A — Primer Plano (Objetos)</option>
-                                    <option value="beneficio_b">Beneficio B — Antes y Después (Taller)</option>
-                                    <option value="beneficio_c">Beneficio C — Con vs Sin (Alto Margen)</option>
-                                </optgroup>
-                                <optgroup label="Ángulo de Curiosidad">
-                                    <option value="curiosidad_a">Curiosidad A — Primer Plano (Secretos)</option>
-                                    <option value="curiosidad_b">Curiosidad B — Antes y Después (Parafina)</option>
-                                    <option value="curiosidad_c">Curiosidad C — Con vs Sin (Costos)</option>
+                                <optgroup label="Planos Técnicos de Creativos (Opción B)">
+                                    <option value="creativo_1">Creativo 1 — Frustración Financiera (Dolor)</option>
+                                    <option value="creativo_2">Creativo 2 — El Error del Amateur (Frustración)</option>
+                                    <option value="creativo_3">Creativo 3 — El Negocio desde Casa (Transformación)</option>
+                                    <option value="creativo_4">Creativo 4 — El Producto como Deseo (Lujo)</option>
+                                    <option value="creativo_5">Creativo 5 — Comparativa de Margen ($3 vs $30)</option>
                                 </optgroup>
                                 <option value="oferta_bofu">Lámina de Oferta BOFU (Cierre de Carrusel)</option>
                             </select>
@@ -395,66 +387,38 @@
 
         // --- 3. LÓGICA DE ANUNCIO ÚNICO (DECOUPLED, MEMORY & LOCALSTORAGE READY) ---
         const textPresets = {
-            dolor_a: {
+            creativo_1: {
                 badge: 'DEJA EL BUCLE ROTO',
-                hook: '¿CANSADA DE QUE EL SUELDO SE TERMINE A MITAD DE MES?',
+                hook: '¿CANSADA DE QUE EL SUELDO NO ALCANCE?',
                 sub: 'Pasa de la rutina laboral a tu propio negocio creativo hoy.',
                 align: 'bottom',
                 subAlign: 'bottom'
             },
-            dolor_b: {
-                badge: 'DEJA EL BUCLE ROTO',
-                hook: 'DE MANUALIDADES BARATAS A MARCA DE LUJO DESDE CASA',
-                sub: 'Aprende el método exacto para facturar desde tu cocina hoy.',
-                align: 'bottom',
-                subAlign: 'bottom'
-            },
-            dolor_c: {
-                badge: 'DEJA EL BUCLE ROTO',
-                hook: 'EVITA PERDER DINERO EN MATERIALES. APRENDE EL MÉTODO.',
+            creativo_2: {
+                badge: 'EVITA ERRORES',
+                hook: 'EL ERROR DE HACER VELAS SIN UN MÉTODO',
                 sub: 'Por esto tu cera de soja se agrieta o se quema mal.',
                 align: 'bottom',
                 subAlign: 'bottom'
             },
-            beneficio_a: {
-                badge: 'ESTUDIO AROMÁTICO PREMIUM',
-                hook: 'CREA OBJETOS DE DESEO PREMIUM DESDE TU COCINA',
-                sub: 'Lanza tu marca Eco-Boutique en 14 días con solo $40 de materiales.',
+            creativo_3: {
+                badge: 'ECO-BOUTIQUE 360',
+                hook: 'TU PROPIO ESTUDIO AROMÁTICO EN 14 DÍAS',
+                sub: 'Lanza tu taller en casa con solo $40 de materiales.',
                 align: 'bottom',
                 subAlign: 'bottom'
             },
-            beneficio_b: {
-                badge: 'ESTUDIO AROMÁTICO PREMIUM',
-                hook: 'EMPRENDE DESDE CASA CON VELAS BOTÁNICAS PREMIUM',
-                sub: 'Maneja tus horarios y genera un ingreso extra de forma relajante.',
+            creativo_4: {
+                badge: 'PRODUCTO PREMIUM',
+                hook: 'CREA VELAS DE LUJO DESDE CASA',
+                sub: 'Aprende el método exacto para venderlas a precios boutique.',
                 align: 'bottom',
                 subAlign: 'bottom'
             },
-            beneficio_c: {
-                badge: 'ESTUDIO AROMÁTICO PREMIUM',
-                hook: 'CREA UNA MARCA DE ALTO MARGEN DESDE TU CASA',
-                sub: 'La gran diferencia entre vender manualidades o vender lujo.',
-                align: 'bottom',
-                subAlign: 'bottom'
-            },
-            curiosidad_a: {
-                badge: 'EL SECRETO PREMIUM',
-                hook: 'LO QUE LAS GRANDES MARCAS DE VELAS NO TE REVELAN',
-                sub: 'El secreto del vertido perfecto y la mecha de madera crepitante.',
-                align: 'bottom',
-                subAlign: 'bottom'
-            },
-            curiosidad_b: {
-                badge: 'EL SECRETO PREMIUM',
-                hook: 'EL MERCADO DE LAS VELAS INDUSTRIALES ESTÁ MURIENDO',
-                sub: 'Los consumidores buscan experiencias sensoriales ecológicas.',
-                align: 'bottom',
-                subAlign: 'bottom'
-            },
-            curiosidad_c: {
-                badge: 'EL SECRETO PREMIUM',
-                hook: 'INICIA TU NEGOCIO DE VELAS CON PRESUPUESTO INTELIGENTE',
-                sub: 'Evita el error de comprar materiales al azar sin una guía.',
+            creativo_5: {
+                badge: 'CUIDA TU MARGEN',
+                hook: 'DE VENDER VELAS DE $3 USD A CREAR UNA ECO-BOUTIQUE DE $30 USD',
+                sub: 'La gran diferencia entre hacer manualidades o vender lujo.',
                 align: 'bottom',
                 subAlign: 'bottom'
             },
@@ -469,15 +433,15 @@
 
         // Estado inicial para las 9 opciones de fondos posibles
         const defaultAdState = {
-            'assets/ad_bg_dolor.webp': { ...textPresets.dolor_b },
-            'assets/ad_bg_dolor_2.webp': { ...textPresets.dolor_a },
-            'assets/ad_bg_dolor_3.webp': { ...textPresets.dolor_c },
-            'assets/ad_bg_beneficio.webp': { ...textPresets.beneficio_c },
-            'assets/ad_bg_beneficio_2.webp': { ...textPresets.beneficio_b },
-            'assets/ad_bg_beneficio_3.webp': { ...textPresets.beneficio_a },
-            'assets/ad_bg_curiosidad.webp': { ...textPresets.curiosidad_b },
-            'assets/ad_bg_curiosidad_2.webp': { ...textPresets.curiosidad_a },
-            'assets/ad_bg_curiosidad_3.webp': { ...textPresets.curiosidad_c }
+            'assets/ad_bg_dolor.webp': { ...textPresets.creativo_1 },
+            'assets/ad_bg_dolor_2.webp': { ...textPresets.creativo_1 },
+            'assets/ad_bg_dolor_3.webp': { ...textPresets.creativo_2 },
+            'assets/ad_bg_beneficio.webp': { ...textPresets.creativo_5 },
+            'assets/ad_bg_beneficio_2.webp': { ...textPresets.creativo_3 },
+            'assets/ad_bg_beneficio_3.webp': { ...textPresets.creativo_4 },
+            'assets/ad_bg_curiosidad.webp': { ...textPresets.creativo_4 },
+            'assets/ad_bg_curiosidad_2.webp': { ...textPresets.creativo_3 },
+            'assets/ad_bg_curiosidad_3.webp': { ...textPresets.creativo_2 }
         };
 
         // Cargar desde LocalStorage o inicializar
