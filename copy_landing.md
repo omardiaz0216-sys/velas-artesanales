@@ -10,7 +10,7 @@ El copy ataca directamente los códigos de Control (generar ingresos seguros sin
 ---
 
 # BLOQUE 2: TITULAR DE CURIOSIDAD (HERO)
-## El Secreto Para Convertir Tu Cocina en una Boutique de Velas y Jabones Altamente Rentable en 14 Días
+## ¿Sabías Que Puedes Transformar Tu Cocina en un Taller Artesanal Altamente Rentable en Solo 14 Días?
 
 *[PLACEHOLDER: IMAGEN HERO EMOCIONAL - ASPIRACIONAL: Mujer joven sonriendo en una cocina limpia, sosteniendo una vela estéticamente perfecta empacada en caja de lujo]*
 
@@ -30,8 +30,8 @@ Y sientes esa punzada de culpa. "Yo podría hacer eso", piensas. "Tengo el talen
 ---
 
 # BLOQUE 4: EL INVALIDADOR
-# La trampa de los métodos convencionales: El "Bucle Roto"
-Allá afuera, el mercado está inundado de cursitos baratos de "haz tu propia vela en casa". Te enseñan a hacer la manualidad, pero te dejan completamente sola a la hora de venderla. Te hacen creer que el negocio es vender velas baratas en ferias locales, compitiendo por centavos. Eso es un ecosistema incompleto, un "Bucle Roto".
+# La trampa de los métodos convencionales: El "Método Incompleto de Ensayo y Error"
+Allá afuera, el mercado está inundado de cursitos baratos de "haz tu propia vela en casa". Te enseñan a hacer la manualidad, pero te dejan completamente sola a la hora de venderla. Te hacen creer que el negocio es vender velas baratas en ferias locales, compitiendo por centavos. Eso es un ecosistema incompleto, un "Método Incompleto de Ensayo y Error".
 
 Esa es la receta perfecta para aplastar tu sueño, agotar tus ahorros en materiales mediocres y terminar odiando algo que debía darte placer. Cuando dependes de intermediarios o compites por precio en un sistema roto, siempre habrá alguien dispuesto a vender más barato. Esa batalla es una pérdida de tiempo y dinero garantizada.
 
@@ -41,29 +41,29 @@ Esa es la receta perfecta para aplastar tu sueño, agotar tus ahorros en materia
 
 # BLOQUE 5: REVELACIÓN DEL MECANISMO ÚNICO (NEURO-CONTRASTE DE ALIVIO)
 ## Por Fin, Tu Salida De La Rutina
-# El Alivio Que Buscabas: Recupera El Control Con El Sistema de Bucle Cerrado
+# El Alivio Que Buscabas: Recupera El Control Con El Sistema de Formulación y Marca Guiada™
 
 *Respira profundo: No naciste para ser espectadora de cómo otras mujeres construyen su libertad mientras tú agotas tu vida en la rutina.*
 
-No necesitas arriesgar tus ahorros ni perder meses en frustrante prueba y error en un "bucle roto". Solo necesitas un ecosistema seguro, predecible y comprobado para tomar el control total de tus ingresos desde la comodidad de tu cocina, sin intermediarios.
+No necesitas arriesgar tus ahorros ni perder meses en frustrante prueba y error en un "método incompleto". Solo necesitas un ecosistema seguro, predecible y comprobado para tomar el control total de tus ingresos desde la comodidad de tu cocina, sin intermediarios.
 
-Te presentamos el **Sistema Eco-Boutique 360**. El único método sigiloso de "Bucle Cerrado" que te enseña a dominar más de 10 formulaciones exactas y la estrategia de neuromarketing exacta para posicionarlas como objetos de deseo.
+Te presentamos el **Sistema de Formulación y Marca Guiada™**. El único método paso a paso que te enseña a dominar más de 10 formulaciones exactas y la estrategia de neuromarketing exacta para posicionarlas como objetos de deseo.
 
-**¿Cómo funciona el Bucle Cerrado?**
-1. **Formulación Botánica:** Creas productos premium (como la Vela Iceberg) a muy bajo costo en tu hogar.
+**¿Cómo funciona el Sistema de Formulación y Marca Guiada™?**
+1. **Formulación Artesanal:** Creas productos premium (como la Vela Iceberg) a muy bajo costo en tu hogar.
 2. **Packaging Hipnótico:** Aplicas nuestro ADN Visual para que tu producto luzca como una marca europea.
 3. **Venta Directa Social:** Usas Instagram para vender directo al cliente final. Tú controlas todo el proceso y retienes el 100% de la rentabilidad. No hay fugas de dinero ni comisiones a terceros. 
 
-*[PLACEHOLDER: IMAGEN SOLUCIÓN EMOCIONAL - ALIVIO: Una colección de 3 velas de lujo y 2 jabones botánicos con empaques minimalistas, iluminados por luz natural]*
+*[PLACEHOLDER: IMAGEN SOLUCIÓN EMOCIONAL - ALIVIO: Una colección de 3 velas de lujo y 2 jabones artesanales con empaques minimalistas, iluminados por luz natural]*
 
 ---
 
 # BLOQUE 6: EL PUENTE LÓGICO (La Anatomía de la Claridad)
 # Cómo 14 Días Reprograman Tus Resultados
-1. **Fase 1 (Días 1-3): El Estudio Alquimista.** Domina todas las ceras (microperlada, soja, colza, arroz, abeja, coco, gel). Crearás la luminosa **Vela Iceberg** y la estética **Vela Marmolizada**.
-2. **Fase 2 (Días 4-7): La Firma Botánica.** Inunda los sentidos de tus clientes. Impresiona con diseños hiper-realistas como la **Vela Suculenta** y las cautivadoras **Técnicas de Repostería**.
+1. **Fase 1 (Días 1-3): El Estudio Alquimista.** Domina el manejo avanzado de todos los tipos de ceras (vegetales, animales y minerales). Crearás la luminosa **Vela Iceberg**, la estética **Vela Marmolizada** y proyectos de repostería.
+2. **Fase 2 (Días 4-7): La Firma Artesanal.** Expande tu portafolio. Aprende la saponificación en frío y crea jabones exfoliantes, hidratantes, terapéuticos, medicinales, de limpieza y de ritual.
 3. **Fase 3 (Días 8-11): La Arquitectura del Lujo.** Empaques, etiquetas y presentación. Te enseñaremos los secretos visuales para que un producto de $3 dólares parezca que cuesta $35.
-4. **Fase 4 (Días 12-14): El Lanzamiento Sigiloso.** Configura tu tienda en Instagram, aprende a cobrar, y desata tu primera campaña de ventas atrayendo clientes dispuestos a pagar por exclusividad.
+4. **Fase 4 (Días 12-14): El Lanzamiento Guiado.** De la mano de un experto en marketing y ventas, aprenderás las claves para lanzar tu negocio (físico o digital), evitar errores comunes y posicionar tu marca para vender en Etsy o Instagram.
 
 ---
 
@@ -79,7 +79,7 @@ Te presentamos el **Sistema Eco-Boutique 360**. El único método sigiloso de "B
 
 # BLOQUE 7: OFERTA IRRESISTIBLE
 # La infraestructura completa, en tus manos hoy
-Con el Sistema Eco-Boutique 360 (Videocurso Completo) obtendrás acceso inmediato y de por vida a la plataforma de alumnos, lecciones paso a paso en alta definición, y nuestra comunidad privada de apoyo. (Valor Normal: ~~$97 USD~~)
+Con el Sistema de Formulación y Marca Guiada™ obtendrás acceso de por vida a las actualizaciones, lecciones paso a paso en alta definición y, lo más importante: **Soporte de tus tutores durante 12 meses** para resolver cualquier duda. Además, solo por hoy, te llevas **los dos programas (Velas + Jabones) por el precio de uno**. (Valor Normal: ~~$97 USD~~)
 
 ---
 
@@ -88,7 +88,7 @@ Con el Sistema Eco-Boutique 360 (Videocurso Completo) obtendrás acceso inmediat
 **Bono VIP 1: Masterclass de Velas Navideñas Temáticas** (Valor Normal: ~~$47 USD~~) - Hoy GRATIS.
 Aprende a crear diseños festivos de altísima demanda y asegura ingresos masivos durante la temporada alta de fin de año.
 
-**Bono VIP 2: Curso Completo de Jabones Artesanales Botánicos** (Valor Normal: ~~$67 USD~~) - Hoy GRATIS.
+**Bono VIP 2: Curso Completo de Jabones Artesanales** (Valor Normal: ~~$67 USD~~) - Hoy GRATIS.
 Expande tu línea de productos. Domina la saponificación en frío y crea jabones de lujo que triplicarán el valor de tus canastas de regalo.
 
 **Bono VIP 3: La Bóveda del Emprendedor (Mega-Pack 18 en 1)** (Valor Normal: ~~$147 USD~~) - Hoy GRATIS.
@@ -98,7 +98,7 @@ Un cofre digital masivo que contiene 18 herramientas invaluables: Nuestro Direct
 
 # BLOQUE 9: ANCLAJE FINAL Y PRECIO
 **El Costo Real:**
-Crear un negocio de Bucle Cerrado en el mundo físico requiere alquilar un local, pagar intermediarios y arriesgar miles de dólares en inventario. Hoy te llevas el plano maestro para construirlo digitalmente desde casa.
+Crear un negocio rentable en el mundo físico requiere alquilar un local, pagar intermediarios y arriesgar miles de dólares en inventario. Hoy te llevas el plano maestro para construir tu propia marca digitalmente desde casa.
 
 **Valor Total del Sistema:** ~~**$358 USD**~~
 *[PLACEHOLDER: COUNTDOWN DE URGENCIA REINICIABLE A MEDIANOCHE LOCAL]*
@@ -114,9 +114,10 @@ Por menos de lo que cuesta una cena para dos en un restaurante promedio, puedes 
 # BLOQUE 10: EL STACK DE VALOR (Resumen Final)
 # Esto es todo lo que te llevas hoy:
 *[PLACEHOLDER: IMAGEN BUNDLE_MOCKUP.PNG CON TODOS LOS PRODUCTOS]*
-* [✓] Curso Completo: Sistema Eco-Boutique 360 (Valor: $97)
+* [✓] Curso Completo: Sistema de Formulación y Marca Guiada™ (Velas + Jabones 2x1) (Valor: $97)
+* [✓] Acompañamiento: Soporte de Tutores por 12 Meses (Valor: $197)
 * [✓] Bono 1: Masterclass Velas Navideñas (Valor: $47)
-* [✓] Bono 2: Curso Jabones Artesanales Botánicos (Valor: $67)
+* [✓] Bono 2: Curso Jabones Artesanales (Valor: $67)
 * [✓] Bono 3: La Bóveda (Mega-Pack 18 Recursos Exclusivos) (Valor: $147)
 * [✓] Acceso de por Vida y Actualizaciones (Invaluable)
 * [✓] Garantía Incondicional de 7 Días.
@@ -135,7 +136,7 @@ Por menos de lo que cuesta una cena para dos en un restaurante promedio, puedes 
 
 # BLOQUE 12: GARANTÍA CERO-FRICCIÓN Y FAQ
 # Garantía Incondicional de 7 Días
-No tienes absolutamente nada que perder. Entra hoy al Sistema Eco-Boutique 360. Si en los próximos 7 días descubres que el contenido no es para ti, o si simplemente no te gusta mi tono de voz en los videos, mándame un correo y te devolveré hasta el último centavo de tu dinero. Sin preguntas, sin fricciones. Proteger tu dinero es nuestra prioridad.
+No tienes absolutamente nada que perder. Entra hoy al Sistema de Formulación y Marca Guiada™. Si en los próximos 7 días descubres que el contenido no es para ti, o si simplemente no te gusta mi tono de voz en los videos, mándame un correo y te devolveré hasta el último centavo de tu dinero. Sin preguntas, sin fricciones. Proteger tu dinero es nuestra prioridad.
 
 **PREGUNTAS FRECUENTES (FAQ)**
 1. **¿Es un solo pago o me van a cobrar una mensualidad?**
