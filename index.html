@@ -599,48 +599,49 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
              ============================================================ -->
 
         <!-- CARRUSEL MÓVIL: ocupa el ancho completo del viewport, SIN max-w restrictivo -->
-        <div class="relative md:hidden">
+        <div class="w-full overflow-hidden">
+            <div class="relative md:hidden pb-8">
                 <!-- Pista deslizante -->
-                <div id="testimonios-slider" class="flex gap-4 overflow-x-auto pb-4"
+                <div id="testimonios-slider" class="flex gap-4 overflow-x-auto pb-4 px-4"
                      style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none;">
 
                     <!-- Testimonio 1 -->
-                    <div class="flex-shrink-0 w-[85vw] bg-white rounded-2xl shadow-sm border overflow-hidden" style="scroll-snap-align: center; border-color:#E8E4DC;">
+                    <div class="flex-shrink-0 w-[280px] bg-white rounded-2xl shadow-sm border overflow-hidden" style="scroll-snap-align: center; scroll-snap-stop: always; border-color:#E8E4DC;">
                         <img src="assets/testimonio_1.webp" alt="Resultado de alumna - Caso 1"
                              class="w-full h-auto object-contain rounded-xl"
                              loading="lazy" width="400" height="867" style="aspect-ratio:400/867;"
                              onerror="this.style.display='none'">
                     </div>
                     <!-- Testimonio 2 -->
-                    <div class="flex-shrink-0 w-[85vw] bg-white rounded-2xl shadow-sm border overflow-hidden" style="scroll-snap-align: center; border-color:#E8E4DC;">
+                    <div class="flex-shrink-0 w-[280px] bg-white rounded-2xl shadow-sm border overflow-hidden" style="scroll-snap-align: center; scroll-snap-stop: always; border-color:#E8E4DC;">
                         <img src="assets/testimonio_2.webp" alt="Resultado de alumna - Caso 2"
                              class="w-full h-auto object-contain rounded-xl"
                              loading="lazy" width="400" height="867" style="aspect-ratio:400/867;"
                              onerror="this.style.display='none'">
                     </div>
                     <!-- Testimonio 3 -->
-                    <div class="flex-shrink-0 w-[85vw] bg-white rounded-2xl shadow-sm border overflow-hidden" style="scroll-snap-align: center; border-color:#E8E4DC;">
+                    <div class="flex-shrink-0 w-[280px] bg-white rounded-2xl shadow-sm border overflow-hidden" style="scroll-snap-align: center; scroll-snap-stop: always; border-color:#E8E4DC;">
                         <img src="assets/testimonio_3.webp" alt="Resultado de alumna - Caso 3"
                              class="w-full h-auto object-contain rounded-xl"
                              loading="lazy" width="400" height="867" style="aspect-ratio:400/867;"
                              onerror="this.style.display='none'">
                     </div>
                     <!-- Testimonio 4 -->
-                    <div class="flex-shrink-0 w-[85vw] bg-white rounded-2xl shadow-sm border overflow-hidden" style="scroll-snap-align: center; border-color:#E8E4DC;">
+                    <div class="flex-shrink-0 w-[280px] bg-white rounded-2xl shadow-sm border overflow-hidden" style="scroll-snap-align: center; scroll-snap-stop: always; border-color:#E8E4DC;">
                         <img src="assets/testimonio_4.webp" alt="Resultado de alumna - Caso 4"
                              class="w-full h-auto object-contain rounded-xl"
                              loading="lazy" width="400" height="867" style="aspect-ratio:400/867;"
                              onerror="this.style.display='none'">
                     </div>
                     <!-- Testimonio 5 -->
-                    <div class="flex-shrink-0 w-[85vw] bg-white rounded-2xl shadow-sm border overflow-hidden" style="scroll-snap-align: center; border-color:#E8E4DC;">
+                    <div class="flex-shrink-0 w-[280px] bg-white rounded-2xl shadow-sm border overflow-hidden" style="scroll-snap-align: center; scroll-snap-stop: always; border-color:#E8E4DC;">
                         <img src="assets/testimonio_5.webp" alt="Resultado de alumna - Caso 5"
                              class="w-full h-auto object-contain rounded-xl"
                              loading="lazy" width="400" height="867" style="aspect-ratio:400/867;"
                              onerror="this.style.display='none'">
                     </div>
                     <!-- Testimonio 6 -->
-                    <div class="flex-shrink-0 w-[85vw] bg-white rounded-2xl shadow-sm border overflow-hidden" style="scroll-snap-align: center; border-color:#E8E4DC;">
+                    <div class="flex-shrink-0 w-[280px] bg-white rounded-2xl shadow-sm border overflow-hidden" style="scroll-snap-align: center; scroll-snap-stop: always; border-color:#E8E4DC;">
                         <img src="assets/testimonio_6.webp" alt="Resultado de alumna - Caso 6"
                              class="w-full h-auto object-contain rounded-xl"
                              loading="lazy" width="400" height="867" style="aspect-ratio:400/867;"
@@ -657,6 +658,8 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
                     <button onclick="scrollToSlide(4)" class="slider-dot w-2.5 h-2.5 rounded-full transition-all duration-300" style="background:#D1C9BC;" aria-label="Testimonio 5"></button>
                     <button onclick="scrollToSlide(5)" class="slider-dot w-2.5 h-2.5 rounded-full transition-all duration-300" style="background:#D1C9BC;" aria-label="Testimonio 6"></button>
                 </div>
+                </div>
+            </div>
         </div>
 
         <!-- GRID DESKTOP: dentro del contenedor centrado (oculto en móvil, visible desde md) -->
@@ -705,34 +708,68 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
                 </div>
         </div><!-- /grid desktop -->
 
-        <!-- Script del carrusel: Vanilla JS puro, sin librerías, cero impacto en PageSpeed -->
+        <!-- Script del carrusel: Autoplay y Snapping preciso -->
         <script>
         (function() {
             var slider = document.getElementById('testimonios-slider');
             var dots   = document.querySelectorAll('.slider-dot');
             if (!slider) return;
 
+            var currentIndex = 0;
+            var totalSlides = dots.length;
+            var autoPlayInterval;
+            var isInteracting = false;
+
+            // Iniciar Autoplay
+            function startAutoPlay() {
+                stopAutoPlay();
+                autoPlayInterval = setInterval(function() {
+                    if(!isInteracting) {
+                        currentIndex = (currentIndex + 1) % totalSlides;
+                        scrollToSlide(currentIndex);
+                    }
+                }, 3500); // Salto cada 3.5 segundos
+            }
+
+            // Detener Autoplay
+            function stopAutoPlay() {
+                clearInterval(autoPlayInterval);
+            }
+
             // Navegar a slide por índice
             window.scrollToSlide = function(index) {
                 var items = slider.querySelectorAll(':scope > div');
                 if (!items[index]) return;
-                slider.scrollTo({ left: items[index].offsetLeft - slider.offsetLeft, behavior: 'smooth' });
+                currentIndex = index;
+                slider.scrollTo({ left: items[index].offsetLeft - slider.offsetLeft - 16, behavior: 'smooth' }); // -16px por el padding
             };
 
-            // Actualizar punto activo al deslizar
+            // Pausar si el usuario interactúa
+            slider.addEventListener('touchstart', function() { isInteracting = true; stopAutoPlay(); }, {passive: true});
+            slider.addEventListener('touchend', function() { isInteracting = false; startAutoPlay(); }, {passive: true});
+            slider.addEventListener('mousedown', function() { isInteracting = true; stopAutoPlay(); }, {passive: true});
+            slider.addEventListener('mouseup', function() { isInteracting = false; startAutoPlay(); }, {passive: true});
+
+            // Actualizar punto activo al deslizar manual o automático
             slider.addEventListener('scroll', function() {
                 var items = slider.querySelectorAll(':scope > div');
                 var center = slider.scrollLeft + slider.offsetWidth / 2;
                 var closest = 0, minDist = Infinity;
+                
                 items.forEach(function(item, i) {
-                    var dist = Math.abs((item.offsetLeft + item.offsetWidth / 2) - center);
+                    var dist = Math.abs((item.offsetLeft + item.offsetWidth / 2) - (slider.scrollLeft + slider.offsetWidth / 2));
                     if (dist < minDist) { minDist = dist; closest = i; }
                 });
+                
+                currentIndex = closest;
                 dots.forEach(function(dot, i) {
                     dot.style.background = i === closest ? '#E07A5F' : '#D1C9BC';
                     dot.style.transform  = i === closest ? 'scale(1.3)' : 'scale(1)';
                 });
             }, { passive: true });
+
+            // Iniciar al cargar
+            startAutoPlay();
         })();
         </script>
 
