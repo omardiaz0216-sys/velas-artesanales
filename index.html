@@ -579,27 +579,27 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
     </section>
 
     <!-- BLOQUE 11: TESTIMONIOS -->
-    <section class="py-20 px-4 relative overflow-hidden" style="background-color:#FDFBF7;">
+    <section class="py-20 relative" style="background-color:#FDFBF7;">
 
         <!-- Orbe decorativo fondo -->
         <div class="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none" style="background:rgba(224,122,95,0.08); filter:blur(120px);"></div>
 
-        <div class="max-w-6xl mx-auto">
-
-            <!-- Encabezado -->
-            <div class="text-center mb-12">
+        <!-- Encabezado (centrado con padding) -->
+        <div class="max-w-6xl mx-auto px-4 mb-12">
+            <div class="text-center">
                 <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color:#E07A5F;">⭐ Prueba Social Real</p>
                 <h2 class="text-3xl md:text-5xl font-bold text-slate-900">Auditoría de Resultados: <span style="color:#E07A5F;">Casos Reales</span></h2>
                 <p class="mt-4 text-lg text-slate-500 max-w-xl mx-auto">Alumnas que empezaron desde cero y ya tienen su propio taller artesanal premium.</p>
             </div>
+        </div>
 
-            <!-- ============================================================
-                 MÓVIL: Carrusel nativo CSS Scroll Snap (sin JS pesado)
-                 DESKTOP (md+): Grid estático de 3 columnas — oculto en móvil
-                 ============================================================ -->
+        <!-- ============================================================
+             MÓVIL: Carrusel nativo CSS Scroll Snap (sin JS pesado)
+             DESKTOP (md+): Grid estático de 3 columnas — oculto en móvil
+             ============================================================ -->
 
-            <!-- CARRUSEL MÓVIL (visible solo en < md) -->
-            <div class="relative md:hidden">
+        <!-- CARRUSEL MÓVIL: ocupa el ancho completo del viewport, SIN max-w restrictivo -->
+        <div class="relative md:hidden">
                 <!-- Pista deslizante -->
                 <div id="testimonios-slider" class="flex gap-4 overflow-x-auto pb-4"
                      style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none;">
@@ -657,10 +657,10 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
                     <button onclick="scrollToSlide(4)" class="slider-dot w-2.5 h-2.5 rounded-full transition-all duration-300" style="background:#D1C9BC;" aria-label="Testimonio 5"></button>
                     <button onclick="scrollToSlide(5)" class="slider-dot w-2.5 h-2.5 rounded-full transition-all duration-300" style="background:#D1C9BC;" aria-label="Testimonio 6"></button>
                 </div>
-            </div>
+        </div>
 
-            <!-- GRID DESKTOP (oculto en móvil, visible desde md) -->
-            <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- GRID DESKTOP: dentro del contenedor centrado (oculto en móvil, visible desde md) -->
+        <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
                 <!-- Testimonio 1 -->
                 <div class="bg-white p-2 rounded-2xl shadow-sm border overflow-hidden group" style="border-color:#E8E4DC;">
                     <img src="assets/testimonio_1.webp" alt="Resultado de alumna - Caso 1"
@@ -703,9 +703,7 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
                          loading="lazy" width="400" height="867" style="aspect-ratio:400/867;"
                          onerror="this.style.display='none'">
                 </div>
-            </div>
-
-        </div><!-- /max-w -->
+        </div><!-- /grid desktop -->
 
         <!-- Script del carrusel: Vanilla JS puro, sin librerías, cero impacto en PageSpeed -->
         <script>
