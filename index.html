@@ -37,6 +37,12 @@
     /></noscript>
     <!-- End Meta Pixel Code -->
 
+
+    <!-- FONT PRELOADS: Rompe la cascada HTML→CSS→Fonts para reducir LCP -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/outfit-400-3.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/outfit-700-7.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/outfit-800-9.woff2">
+
     <!-- 4. Hoja de estilos (después del Pixel para no bloquear su inicialización) -->
     <link rel="stylesheet" href="styles.css">
     
@@ -64,6 +70,16 @@
         .accordion-content.open { max-height: 400px; padding-top: 1rem; padding-bottom: 1rem; }
         .accordion-btn svg { transition: transform 0.3s ease; }
         .accordion-btn.open svg { transform: rotate(180deg); }
+
+        /* WCAG AA Fix: text-accent en fondos claros → versión oscura para contraste 4.5:1+ */
+        .bg-light .text-accent,
+        section.bg-light .text-accent,
+        .bg-light h2.text-accent,
+        .bg-light h3 .text-accent,
+        .bg-light p .text-accent,
+        .bg-light span.text-accent { color: #9B3E22 !important; }
+        /* highlight-marker en bg-light también */
+        .bg-light .highlight-marker { background: rgba(155, 62, 34, 0.12); color: #7A3018; }
     </style>
 </head>
 <!-- 
@@ -73,6 +89,8 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
 3. RECONOCIMIENTO: Crear un producto premium digno de admirar.
 -->
 <body class="font-sans text-lg md:text-xl antialiased bg-dark text-white overflow-x-hidden selection:bg-accent selection:text-white">
+
+    <main id="contenido-principal">
 
     <!-- BLOQUE 1: PRE-HEADER Y EYEBROW -->
     <div class="bg-light text-slate-900 py-3 px-4 text-center text-sm md:text-base font-semibold tracking-wide border-b border-gray-200">
@@ -1045,6 +1063,8 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "xtqv2x1n95");
     </script>
+    </main><!-- /#contenido-principal -->
+
 </body>
 </html>
 
