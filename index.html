@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Formulación y Marca Guiada™ | Curso de Velas y Jabones Artesanales</title>
     <meta name="description" content="El Sistema Rentable de Velas y Jabones Artesanales. Convierte tu Cocina en un Estudio Aromático Premium en 14 días sin experiencia previa.">
-    <!-- Preloads para acelerar el renderizado (Mejora tasa de carga de Meta Ads) -->
+    <!-- 1. Pre-conexión DNS y TLS paralela a servidores de Meta (Reduce latencia 150-300ms) -->
+    <link rel="preconnect" href="https://connect.facebook.net">
+    <link rel="preconnect" href="https://www.facebook.com">
+    <link rel="dns-prefetch" href="https://connect.facebook.net">
+    <link rel="dns-prefetch" href="https://www.facebook.com">
+
+    <!-- 2. Preload de la imagen Hero (Prioridad máxima de carga visual) -->
     <link rel="preload" as="image" href="assets/hero_eco.webp">
-    <link rel="stylesheet" href="styles.css">
-    <!-- Meta Pixel Code -->
+
+    <!-- 3. Meta Pixel Code — Cargado ANTES del CSS para evitar bloqueo de renderizado -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -18,18 +24,21 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    
-    // Reemplaza 'TU_PIXEL_ID' con tu ID de Pixel real desde Meta Events Manager
+
     const pixelId = '930472840083242';
     if (pixelId && pixelId !== 'TU_PIXEL_ID') {
         fbq('init', pixelId);
-        fbq('track', 'PageView');
+        // Beacon API nativo: registra la visita aunque el usuario cierre la pestaña al instante
+        fbq('track', 'PageView', {}, { transport: 'beacon' });
     }
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=930472840083242&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
+
+    <!-- 4. Hoja de estilos (después del Pixel para no bloquear su inicialización) -->
+    <link rel="stylesheet" href="styles.css">
     
 
     <style>
@@ -82,7 +91,7 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
             </h1>
 
             <div class="relative max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/10 mb-8" style="aspect-ratio: 4/3;">
-                <img src="assets/hero_eco.webp" alt="Valentina Durán en su estudio aromático sosteniendo una Vela Iceberg premium" class="w-full h-full object-cover" onerror="this.style.display='none'" fetchpriority="high" loading="eager" width="800" height="600">
+                <img src="assets/hero_contraste.webp" alt="Contraste entre una vela básica de $3 y una Vela Iceberg premium de $35" class="w-full h-full object-cover" onerror="this.style.display='none'" fetchpriority="high" loading="eager" width="800" height="600">
                 <div class="absolute inset-0 bg-gradient-to-t from-dark/20 via-transparent to-transparent"></div>
             </div>
             
@@ -904,19 +913,62 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
         }
 
         // ============================================================
-        // MOTOR DE RASTREO HOTMART v2.0 — Beacon + Fallback Seguro
-        // Corrige: Race Condition, bloqueo sin UTMs, listeners duplicados
+        // MOTOR DE RASTREO HOTMART v3.0 — Atribución y Persistencia Avanzada
+        // Correcciones: localStorage persistente, recuperación de clic histórico,
+        //               ClickCompra (evita doble conteo con CAPI de Hotmart)
         // ============================================================
         (function() {
             const trackingParams = ['fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'src', 'sck'];
 
-            // PASO 1: Guardar parámetros de la URL actual en sessionStorage
+            // Helper: leer cookies del navegador
+            function getCookieValue(name) {
+                var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+                return match ? decodeURIComponent(match[2]) : null;
+            }
+
+            // Helper: escribir en ambos almacenamientos (persistencia entre pestañas y cierres de navegador)
+            function saveParam(key, val) {
+                sessionStorage.setItem(key, val);
+                localStorage.setItem(key, val);
+            }
+
+            // Helper: leer desde sessionStorage primero, luego localStorage como respaldo
+            function loadParam(key) {
+                return sessionStorage.getItem(key) || localStorage.getItem(key);
+            }
+
+            // PASO 1: Persistencia híbrida — URL tiene prioridad, luego respaldo en localStorage
             const urlParams = new URLSearchParams(window.location.search);
             trackingParams.forEach(function(param) {
-                if (urlParams.has(param)) {
-                    sessionStorage.setItem('hm_' + param, urlParams.get(param));
-                }
+                var val = urlParams.get(param) || loadParam('hm_' + param);
+                if (val) saveParam('hm_' + param, val);
             });
+
+            // Mapear fbclid → sck si no viene sck explícito (CAPI de Hotmart lo necesita)
+            var currentFbclid = loadParam('hm_fbclid');
+            if (currentFbclid && !loadParam('hm_sck')) {
+                saveParam('hm_sck', currentFbclid);
+            }
+
+            // Recuperar fbclid histórico desde la cookie _fbc si la sesión está vacía
+            // Caso: usuario vuelve días después sin fbclid en la URL (tráfico directo/recurrente)
+            if (!currentFbclid) {
+                var fbcCookie = getCookieValue('_fbc');
+                if (fbcCookie) {
+                    var parts = fbcCookie.split('.');
+                    if (parts.length >= 4 && parts[3]) {
+                        var recoveredFbclid = parts[3];
+                        saveParam('hm_fbclid', recoveredFbclid);
+                        saveParam('hm_sck', recoveredFbclid);
+                    }
+                }
+            }
+
+            // Guardar cookies _fbp y _fbc en ambos almacenamientos para Hotmart CAPI
+            var fbpVal = getCookieValue('_fbp');
+            var fbcVal = getCookieValue('_fbc');
+            if (fbpVal) saveParam('hm__fbp', fbpVal);
+            if (fbcVal) saveParam('hm__fbc', fbcVal);
 
             // PASO 2: Configurar todos los enlaces de Hotmart
             function initHotmartLinks() {
@@ -924,31 +976,46 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
 
                 links.forEach(function(link) {
                     try {
-                        // 2a. Inyectar parámetros UTM en la URL de Hotmart (si existen)
+                        // Inyectar parámetros UTM y de atribución en la URL de Hotmart
                         const url = new URL(link.href);
                         var hasParams = false;
+
                         trackingParams.forEach(function(param) {
-                            const val = sessionStorage.getItem('hm_' + param);
+                            var val = loadParam('hm_' + param);
                             if (val) {
                                 url.searchParams.set(param, val);
                                 hasParams = true;
                             }
                         });
+
+                        // Propagar cookies _fbp y _fbc para mejorar Event Match Quality en CAPI
+                        var fbpStored = loadParam('hm__fbp');
+                        var fbcStored = loadParam('hm__fbc');
+                        if (fbpStored) { url.searchParams.set('_fbp', fbpStored); hasParams = true; }
+                        if (fbcStored) { url.searchParams.set('_fbc', fbcStored); hasParams = true; }
+
                         if (hasParams) link.href = url.toString();
 
-                        // 2b. Listener de InitiateCheckout con Beacon + setTimeout fallback
-                        // once:true evita listeners duplicados si la función se ejecuta varias veces
+                        // Listener de clic: dispara ClickCompra (evento personalizado)
+                        // RAZÓN: Hotmart ya dispara 'InitiateCheckout' en su checkout vía su propio CAPI.
+                        // Si también lo disparamos aquí con diferente eventID, Meta cuenta 2 eventos distintos.
+                        // Con 'ClickCompra' mantenemos la métrica de InitiateCheckout limpia (solo Hotmart)
+                        // y ganamos una métrica intermedia nueva para medir abandonos en la redirección.
                         link.addEventListener('click', function(e) {
                             e.preventDefault();
                             var destination = link.href;
 
-                            // Disparar fbq con transport:'beacon' para garantizar entrega
-                            // aunque el navegador cierre la página inmediatamente
                             if (typeof fbq === 'function') {
-                                fbq('track', 'InitiateCheckout', {}, { transport: 'beacon' });
+                                var eventId = 'cc_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                                saveParam('hm_click_event_id', eventId);
+
+                                fbq('trackCustom', 'ClickCompra',
+                                    { value: 37.50, currency: 'USD' },
+                                    { transport: 'beacon', eventID: eventId }
+                                );
                             }
 
-                            // Fallback seguro: redirigir tras 300ms para dar tiempo al beacon
+                            // Redirigir tras 300ms para dar tiempo al beacon de completarse
                             setTimeout(function() {
                                 window.location.href = destination;
                             }, 300);
@@ -956,7 +1023,7 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
                         }, { once: true }); // once:true = nunca se dispara dos veces
 
                     } catch (e) {
-                        console.error('[Hotmart Tracker] Error al procesar enlace:', e);
+                        console.error('[Hotmart Tracker v3.0] Error al procesar enlace:', e);
                     }
                 });
             }
