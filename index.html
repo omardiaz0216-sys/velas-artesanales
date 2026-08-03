@@ -41,71 +41,140 @@
     <!-- FONT PRELOAD: Peso crítico utilizado por el H1 -->
     <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/outfit-800-9.woff2">
 
-    <!-- 4. Hoja de estilos -->
-    <link rel="stylesheet" href="styles.css">
-    
-
     <style>
-        /* CSS CRITICO BÁSICO PARA EL PRIMER VIEWPORT */
-        body { margin: 0; font-family: Outfit, sans-serif; background-color: #0f1714; color: #ffffff; line-height: 1.5; overflow-x: hidden; }
+        /* CSS crítico completo para el preheader y el hero. */
+        @font-face {
+            font-family: 'Outfit';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: url('assets/fonts/outfit-300-1.woff2') format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: 'Outfit';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('assets/fonts/outfit-400-3.woff2') format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: 'Outfit';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url('assets/fonts/outfit-600-5.woff2') format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: 'Outfit';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url('assets/fonts/outfit-700-7.woff2') format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: 'Outfit';
+            font-style: normal;
+            font-weight: 800;
+            font-display: swap;
+            src: url('assets/fonts/outfit-800-9.woff2') format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        *, ::before, ::after { box-sizing: border-box; border: 0 solid #e5e7eb; }
+        html { line-height: 1.5; -webkit-text-size-adjust: 100%; font-family: Outfit, sans-serif; }
+        body { margin: 0; line-height: inherit; overflow-x: hidden; background-color: #0f1714; color: #fff; font-family: Outfit, sans-serif; font-size: 1.125rem; font-weight: 400; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        h1, h2 { margin: 0; font-size: inherit; font-weight: inherit; }
+        a { color: inherit; text-decoration: inherit; }
+        img, svg { display: block; vertical-align: middle; }
+        img { max-width: 100%; height: auto; }
+
+        .absolute { position: absolute; }
+        .relative { position: relative; }
+        .inset-0 { inset: 0; }
+        .top-0 { top: 0; }
+        .bottom-0 { bottom: 0; }
+        .left-0 { left: 0; }
+        .right-0 { right: 0; }
+        .z-10 { z-index: 10; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-10 { margin-bottom: 2.5rem; }
+        .mr-2 { margin-right: .5rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .inline-block { display: inline-block; }
+        .h-full { height: 100%; }
+        .w-full { width: 100%; }
+        .max-w-3xl { max-width: 48rem; }
+        .max-w-4xl { max-width: 56rem; }
+        .overflow-hidden { overflow: hidden; }
+        .overflow-x-hidden { overflow-x: hidden; }
+        .rounded { border-radius: .25rem; }
+        .rounded-3xl { border-radius: 1.5rem; }
+        .rounded-full { border-radius: 9999px; }
+        .border { border-width: 1px; }
+        .border-b { border-bottom-width: 1px; }
+        .border-gray-200 { border-color: #e5e7eb; }
+        .border-white\/10 { border-color: rgba(255, 255, 255, .1); }
+        .bg-accent { background-color: #e07a5f; }
         .bg-dark { background-color: #0f1714; }
         .bg-light { background-color: #fdfbf7; }
-        .text-slate-900 { color: #0f172a; }
-        .bg-accent { background-color: #e07a5f; }
-        .text-white { color: #ffffff; }
+        .object-cover { object-fit: cover; }
+        .px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
+        .px-2\.5 { padding-left: .625rem; padding-right: .625rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-1 { padding-top: .25rem; padding-bottom: .25rem; }
+        .py-3 { padding-top: .75rem; padding-bottom: .75rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .pb-24 { padding-bottom: 6rem; }
+        .pt-16 { padding-top: 4rem; }
         .text-center { text-align: center; }
         .font-sans { font-family: Outfit, sans-serif; }
-        .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
-        .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        .relative { position: relative; }
-        .pt-16 { padding-top: 4rem; }
-        .pb-24 { padding-bottom: 6rem; }
-        .px-4 { padding-left: 1rem; padding-right: 1rem; }
-        .overflow-hidden { overflow: hidden; }
-        .max-w-4xl { max-width: 56rem; }
-        .mx-auto { margin-left: auto; margin-right: auto; }
-        .z-10 { z-index: 10; }
         .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+        .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+        .text-sm { font-size: .875rem; line-height: 1.25rem; }
+        .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+        .text-xs { font-size: .75rem; line-height: 1rem; }
+        .font-bold { font-weight: 700; }
         .font-extrabold { font-weight: 800; }
+        .font-light { font-weight: 300; }
+        .font-semibold { font-weight: 600; }
+        .uppercase { text-transform: uppercase; }
+        .leading-relaxed { line-height: 1.625; }
         .leading-tight { line-height: 1.25; }
-        .mb-8 { margin-bottom: 2rem; }
-        .text-gradient { color: transparent; -webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #D4AF37, #FDE08B); }
+        .tracking-wide { letter-spacing: .025em; }
+        .tracking-wider { letter-spacing: .05em; }
         .text-accent { color: #e07a5f; }
+        .text-gray-300 { color: #d1d5db; }
+        .text-slate-900 { color: #0f172a; }
+        .text-white { color: #fff; }
+        .text-white\/50 { color: rgba(255, 255, 255, .5); }
+        .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .25); }
+        [aria-label="Ir a la oferta"] { box-shadow: 0 0 20px rgba(224, 122, 95, .4); }
+
+        .text-gradient { color: transparent; -webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #d4af37, #fde08b); }
+        .glow-orb { position: absolute; width: 50vw; height: 50vh; z-index: 0; border-radius: 50%; background: rgba(224, 122, 95, .15); filter: blur(120px); pointer-events: none; }
+        #contenido-principal > section:first-of-type .absolute.inset-0 { background-image: linear-gradient(to top, rgba(15, 23, 20, .2), transparent); }
         main > section:not(:first-of-type) { content-visibility: auto; contain-intrinsic-size: 800px; }
-        /* Fin CSS crítico */
-        html { scroll-behavior: smooth; }
-        .glow-orb { position: absolute; background: rgba(224, 122, 95, 0.15); filter: blur(120px); border-radius: 50%; z-index: 0; width: 50vw; height: 50vh; pointer-events: none; }
-        .glass-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
-        .text-gradient { color: transparent; -webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #D4AF37, #FDE08B); }
-        .highlight-marker { background: rgba(224, 122, 95, 0.15); color: #E07A5F; padding: 0 0.4rem; border-radius: 0.125rem; font-weight: 600; }
-        
-        .guarantee-seal {
-            width: 140px; height: 140px; background: #0F1714; border: 3px solid #D4AF37; border-radius: 50%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-            position: relative; box-shadow: 0 0 25px rgba(212, 175, 55, 0.2); margin: 0 auto;
-        }
-        .guarantee-seal::before {
-            content: ''; position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px;
-            border: 1px dashed rgba(212, 175, 55, 0.7); border-radius: 50%;
-        }
-        .guarantee-seal .days { font-size: 2.5rem; font-weight: 800; color: #D4AF37; line-height: 1; margin-top: 5px; }
-        .guarantee-seal .text { font-size: 0.65rem; font-weight: 700; color: #FDE08B; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; padding: 0 10px; }
 
-        .accordion-content { transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out; max-height: 0; overflow: hidden; padding-top: 0; padding-bottom: 0; }
-        .accordion-content.open { max-height: 400px; padding-top: 1rem; padding-bottom: 1rem; }
-        .accordion-btn svg { transition: transform 0.3s ease; }
-        .accordion-btn.open svg { transform: rotate(180deg); }
-
-        /* WCAG AA Fix: text-accent en fondos claros → versión oscura para contraste 4.5:1+ */
-        .bg-light .text-accent,
-        section.bg-light .text-accent,
-        .bg-light h2.text-accent,
-        .bg-light h3 .text-accent,
-        .bg-light p .text-accent,
-        .bg-light span.text-accent { color: #9B3E22 !important; }
-        /* highlight-marker en bg-light también */
-        .bg-light .highlight-marker { background: rgba(155, 62, 34, 0.12); color: #7A3018; }
+        @media (max-width: 767px) {
+            #contenido-principal > section:first-of-type .glow-orb { filter: blur(32px); }
+        }
+        @media (min-width: 768px) {
+            .md\:text-base { font-size: 1rem; line-height: 1.5rem; }
+            .md\:text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+            .md\:text-2xl { font-size: 1.5rem; line-height: 2rem; }
+            .md\:text-6xl { font-size: 3.75rem; line-height: 1; }
+        }
     </style>
+
+    <!-- 4. Hoja de estilos no bloqueante; el bloque crítico anterior cubre el primer viewport. -->
+    <link rel="preload" as="style" href="styles.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
 </head>
 <!-- 
 HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):

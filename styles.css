@@ -80,6 +80,37 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* Reglas no críticas conservadas fuera del bloque inline. */
+html { scroll-behavior: smooth; }
+.glass-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+.highlight-marker { background: rgba(224, 122, 95, 0.15); color: #E07A5F; padding: 0 0.4rem; border-radius: 0.125rem; font-weight: 600; }
+
+.guarantee-seal {
+  width: 140px; height: 140px; background: #0F1714; border: 3px solid #D4AF37; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  position: relative; box-shadow: 0 0 25px rgba(212, 175, 55, 0.2); margin: 0 auto;
+}
+.guarantee-seal::before {
+  content: ''; position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px;
+  border: 1px dashed rgba(212, 175, 55, 0.7); border-radius: 50%;
+}
+.guarantee-seal .days { font-size: 2.5rem; font-weight: 800; color: #D4AF37; line-height: 1; margin-top: 5px; }
+.guarantee-seal .text { font-size: 0.65rem; font-weight: 700; color: #FDE08B; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; padding: 0 10px; }
+
+.accordion-content { transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out; max-height: 0; overflow: hidden; padding-top: 0; padding-bottom: 0; }
+.accordion-content.open { max-height: 400px; padding-top: 1rem; padding-bottom: 1rem; }
+.accordion-btn svg { transition: transform 0.3s ease; }
+.accordion-btn.open svg { transform: rotate(180deg); }
+
+/* WCAG AA: variante oscura de text-accent sobre fondos claros. */
+.bg-light .text-accent,
+section.bg-light .text-accent,
+.bg-light h2.text-accent,
+.bg-light h3 .text-accent,
+.bg-light p .text-accent,
+.bg-light span.text-accent { color: #9B3E22 !important; }
+.bg-light .highlight-marker { background: rgba(155, 62, 34, 0.12); color: #7A3018; }
+
 /* Reduce el coste de pintura de los orbes del primer viewport solo en móvil. */
 @media (max-width: 767px) {
   #contenido-principal > section:first-of-type .glow-orb {
