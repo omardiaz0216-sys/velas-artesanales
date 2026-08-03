@@ -39,18 +39,44 @@
 
 
     <!-- FONT PRELOADS: Rompe la cascada HTML→CSS→Fonts para reducir LCP -->
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/outfit-400-3.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/outfit-700-7.woff2">
     <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/outfit-800-9.woff2">
 
-    <!-- 4. Hoja de estilos (después del Pixel para no bloquear su inicialización) -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- 4. Hoja de estilos (Carga diferida) -->
+    <link rel="preload" as="style" href="styles.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
     
 
     <style>
+        /* CSS CRITICO BÁSICO PARA EL PRIMER VIEWPORT */
+        body { margin: 0; font-family: Outfit, sans-serif; background-color: #0f1714; color: #ffffff; line-height: 1.5; overflow-x: hidden; }
+        .bg-dark { background-color: #0f1714; }
+        .bg-light { background-color: #fdfbf7; }
+        .text-slate-900 { color: #0f172a; }
+        .bg-accent { background-color: #e07a5f; }
+        .text-white { color: #ffffff; }
+        .text-center { text-align: center; }
+        .font-sans { font-family: Outfit, sans-serif; }
+        .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+        .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        .relative { position: relative; }
+        .pt-16 { padding-top: 4rem; }
+        .pb-24 { padding-bottom: 6rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .overflow-hidden { overflow: hidden; }
+        .max-w-4xl { max-width: 56rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .z-10 { z-index: 10; }
+        .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+        .font-extrabold { font-weight: 800; }
+        .leading-tight { line-height: 1.25; }
+        .mb-8 { margin-bottom: 2rem; }
+        .text-gradient { color: transparent; -webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #D4AF37, #FDE08B); }
+        .text-accent { color: #e07a5f; }
+        main > section:not(:first-of-type) { content-visibility: auto; contain-intrinsic-size: 800px; }
+        /* Fin CSS crítico */
         html { scroll-behavior: smooth; }
         .glow-orb { position: absolute; background: rgba(224, 122, 95, 0.15); filter: blur(120px); border-radius: 50%; z-index: 0; width: 50vw; height: 50vh; pointer-events: none; }
-        .glass-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; backdrop-filter: blur(12px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .glass-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
         .text-gradient { color: transparent; -webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #D4AF37, #FDE08B); }
         .highlight-marker { background: rgba(224, 122, 95, 0.15); color: #E07A5F; padding: 0 0.4rem; border-radius: 0.125rem; font-weight: 600; }
         
@@ -109,7 +135,10 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
             </h1>
 
             <div class="relative max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/10 mb-8" style="aspect-ratio: 4/3;">
-                <img src="assets/hero_contraste.webp" alt="Contraste entre una vela básica de $3 y una Vela Iceberg premium de $35" class="w-full h-full object-cover" onerror="this.style.display='none'" fetchpriority="high" loading="eager" width="800" height="600">
+                <picture>
+                    <source srcset="assets/hero_contraste.avif" type="image/avif">
+                    <img src="assets/hero_contraste.webp" alt="Contraste entre una vela básica de $3 y una Vela Iceberg premium de $35" class="w-full h-full object-cover" onerror="this.style.display='none'" fetchpriority="high" loading="eager" width="800" height="600">
+                </picture>
                 <div class="absolute inset-0 bg-gradient-to-t from-dark/20 via-transparent to-transparent"></div>
             </div>
             
@@ -799,8 +828,14 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
                 });
             }, { passive: true });
 
-            // Iniciar al cargar
-            startAutoPlay();
+            // Iniciar mediante IntersectionObserver para no afectar CPU en carga
+            const sliderObserver = new IntersectionObserver(function(entries, obs) {
+                if (entries[0].isIntersecting) {
+                    startAutoPlay();
+                    obs.disconnect();
+                }
+            }, { rootMargin: '300px' });
+            sliderObserver.observe(slider);
         })();
         </script>
 
@@ -914,6 +949,7 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
         // Countdown (Reinicia a medianoche local)
         const countdownEl = document.getElementById('countdown');
         if(countdownEl) {
+            let countdownInterval;
             function updateCountdown() {
                 const now = new Date();
                 const midnight = new Date(now);
@@ -926,8 +962,17 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
                 
                 countdownEl.innerText = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
             }
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
+            
+            const countdownObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        updateCountdown();
+                        countdownInterval = setInterval(updateCountdown, 1000);
+                        obs.disconnect();
+                    }
+                });
+            }, { rootMargin: '200px' });
+            countdownObserver.observe(countdownEl);
         }
 
         // ============================================================
@@ -1047,21 +1092,38 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
             }
 
             // PASO 3: Ejecutar cuando el DOM esté completamente listo
+            const runHotmart = function() {
+                if (window.requestIdleCallback) {
+                    requestIdleCallback(initHotmartLinks);
+                } else {
+                    setTimeout(initHotmartLinks, 500);
+                }
+            };
+
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initHotmartLinks);
+                document.addEventListener('DOMContentLoaded', runHotmart);
             } else {
-                initHotmartLinks();
+                runHotmart();
             }
         })();
     </script>
 
-    <!-- Microsoft Clarity (Movido al final para no bloquear LCP ni Meta Pixel) -->
-    <script defer type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "xtqv2x1n95");
+    <!-- Microsoft Clarity (Cargado en idle para evitar bloqueo LCP/TBT) -->
+    <script type="text/javascript">
+        window.addEventListener('load', function() {
+            var initClarity = function() {
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "xtqv2x1n95");
+            };
+            if (window.requestIdleCallback) {
+                requestIdleCallback(initClarity, { timeout: 2000 });
+            } else {
+                setTimeout(initClarity, 1500);
+            }
+        });
     </script>
     </main><!-- /#contenido-principal -->
 
