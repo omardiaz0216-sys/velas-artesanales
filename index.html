@@ -30,11 +30,9 @@
         fbq('init', pixelId);
         // Beacon API nativo: registra la visita aunque el usuario cierre la pestaña al instante
         fbq('track', 'PageView', {}, { transport: 'beacon' });
+        fbq('track', 'ViewContent');
     }
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=930472840083242&ev=PageView&noscript=1"
-    /></noscript>
     <!-- End Meta Pixel Code -->
 
 
@@ -183,6 +181,9 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
 3. RECONOCIMIENTO: Crear un producto premium digno de admirar.
 -->
 <body class="font-sans text-lg md:text-xl antialiased bg-dark text-white overflow-x-hidden selection:bg-accent selection:text-white">
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=930472840083242&ev=PageView&noscript=1"
+    /></noscript>
 
     <main id="contenido-principal">
 
@@ -1132,20 +1133,8 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
                 });
             }
 
-            // PASO 3: Ejecutar cuando el DOM esté completamente listo
-            const runHotmart = function() {
-                if (window.requestIdleCallback) {
-                    requestIdleCallback(initHotmartLinks);
-                } else {
-                    setTimeout(initHotmartLinks, 500);
-                }
-            };
-
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', runHotmart);
-            } else {
-                runHotmart();
-            }
+            // PASO 3: El CTA ya existe en el DOM; instalar el listener inmediatamente
+            initHotmartLinks();
         })();
     </script>
 
