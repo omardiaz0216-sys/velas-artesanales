@@ -12,7 +12,7 @@
     <link rel="dns-prefetch" href="https://www.facebook.com">
 
     <!-- 2. Preload de la imagen Hero (Prioridad máxima de carga visual) -->
-    <link rel="preload" as="image" href="assets/hero_contraste.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/hero_contraste.avif" type="image/avif" fetchpriority="high">
 
     <!-- 3. Meta Pixel Code — Cargado ANTES del CSS para evitar bloqueo de renderizado -->
     <script>
@@ -38,7 +38,7 @@
     <!-- End Meta Pixel Code -->
 
 
-    <!-- FONT PRELOADS: Rompe la cascada HTML→CSS→Fonts para reducir LCP -->
+    <!-- FONT PRELOAD: Peso crítico utilizado por el H1 -->
     <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/outfit-800-9.woff2">
 
     <!-- 4. Hoja de estilos (Carga diferida) -->
@@ -720,7 +720,6 @@ HIPÓTESIS ASUMIDAS (CÓDIGOS REPTILIANOS):
                 </div>
                 </div>
             </div>
-        </div>
 
         <!-- GRID DESKTOP: dentro del contenedor centrado (oculto en móvil, visible desde md) -->
         <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
